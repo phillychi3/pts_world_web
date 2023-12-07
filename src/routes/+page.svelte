@@ -36,8 +36,12 @@
 		inputPopupDemo = event.detail.label;
 	}
 </script>
+<svelte:head>
+	<title>pts world, 最好的娛樂機器人</title>
+	<link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+</svelte:head>
 
-<AppBar slotDefault="place-self-start" slotTrail="place-content-end">
+<AppBar slotDefault="place-self-start" slotTrail="place-content-end" class="top-0 sticky">
 	<h2 class="h2">PTS World</h2>
 	<svelte:fragment slot="trail">
 		<div class="text-token w-full max-w-[20%]">
@@ -62,6 +66,10 @@
 			/>
 		</div>
 		<LightSwitch />
+		<a href="/">
+			<!-- <img src="github-mark.svg" alt="github" class="w-6 h-6 from-violet-50" /> -->
+			<i class="fa fa-github" aria-hidden="true"></i>
+		</a>
 	</svelte:fragment>
 </AppBar>
 <div class="max-h-full">
@@ -77,11 +85,13 @@
                     PTS World
                     </span>
                 </h1>
-                <a href="/" class="btn variant-filled">邀請到Discord</a>
-                <a href="/" class="btn variant-filled">加入官方伺服器</a>
+				<div class="flex pt-10 justify-center">
+					<a href="/" class="btn variant-filled ml-3 mr-3">邀請到Discord</a>
+					<a href="/" class="btn variant-filled ml-3 mr-3">加入官方伺服器</a>
+				</div>
             </div>
             <div>
-                <img src="rtd.png" alt="pts" class="w-96 h-96">
+                <img src="rtd.png" alt="pts" class="w-96 h-96 rounded-full">
             </div>
         </section>
         <section>
@@ -94,28 +104,48 @@
                     </Marquee>
                 </div>
         </section>
+		<section>
+			<div>
+				<h1 class="h1 text-center">
+					多種玩法
+				</h1>
+			</div>
+		</section>
+		<section>
+			<div>
+				<h1 class="h1 text-center">
+					全中文介面
+				</h1>
+			</div>
+		</section>
         <section>
             <div>
-                <h1 class="h1 text-left">
-                    test
-                    <br>
-                    test
-                    <br>
-                    test
-                    <br>
-                    test
-                    <br>
-                    test
-                    <br>
-                    test
-                    <br>
-                    test
-                    <br>
-                    test
-                    <br>
+                <h1 class="h1 text-center">
+					眾多的種族可供選擇
+                </h1>
+				<div class="grid-cols-3 gap-4 grid">
+					<div>11111</div>
+					<div>11111</div>
+					<div>11111</div>
+					<div>11111</div>
+					<div>11111</div>
+					<div>11111</div>
+				</div>
+            </div>
+        </section>
+        <section>
+            <div>
+                <h1 class="h1 text-center">
+					全球經濟系統
                 </h1>
             </div>
         </section>
-
+        <section>
+            <div>
+                <h1 class="h1 text-center">
+					想要更多?
+                </h1>
+            </div>
+        </section>
     </div>
 </div>
