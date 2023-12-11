@@ -183,42 +183,38 @@
                 <h1 class="h1 text-center">
 					眾多的種族可供選擇
                 </h1>
-				<div class="grid-cols-3 gap-4 grid mt-6">
-					<div class="card card-hover">
-						<div class="card-header">edit later lol</div>
-						<div class="card-header">edit later lol</div>
+				<div class="grid-cols-3 gap-4 grid mt-6 ">
+					<div class="card card-hover variant-ghost-tertiary">
+						<div class="card-header">百鬼神魔法</div>
+						<div class="p-4">擅長精神魔法</div>
 					</div>
-					<div class="card card-hover">
-						<div class="card-header">edit later lol</div>
-						<div class="card-header">edit later lol</div>
+					<div class="card card-hover variant-ghost-tertiary">
+						<div class="card-header">血族</div>
+						<div class="p-4">可使用吸血魔法</div>
 					</div>
-					<div class="card card-hover">
-						<div class="card-header">edit later lol</div>
-						<div class="card-header">edit later lol</div>
+					<div class="card card-hover variant-ghost-tertiary">
+						<div class="card-header">海生</div>
+						<div class="p-4">可自由操控水元素</div>
 					</div>
-					<div class="card card-hover">
-						<div class="card-header">edit later lol</div>
-						<div class="card-header">edit later lol</div>
+					<div class="card card-hover variant-ghost-tertiary">
+						<div class="card-header">歌者</div>
+						<div class="p-4">透過音樂對目標進行增益或傷害</div>
 					</div>
-					<div class="card card-hover">
-						<div class="card-header">edit later lol</div>
-						<div class="card-header">edit later lol</div>
+					<div class="card card-hover variant-ghost-tertiary">
+						<div class="card-header">精靈</div>
+						<div class="p-4">可操控任何魔法</div>
 					</div>
-					<div class="card card-hover">
-						<div class="card-header">edit later lol</div>
-						<div class="card-header">edit later lol</div>
+					<div class="card card-hover variant-ghost-tertiary">
+						<div class="card-header">機械</div>
+						<div class="p-4">可使用特殊技術複製魔法或裝置</div>
 					</div>
-					<div class="card card-hover">
-						<div class="card-header">edit later lol</div>
-						<div class="card-header">edit later lol</div>
+					<div class="card card-hover variant-ghost-tertiary">
+						<div class="card-header">龍族</div>
+						<div class="p-4">掌握時間魔法</div>
 					</div>
-					<div class="card card-hover">
-						<div class="card-header">edit later lol</div>
-						<div class="card-header">edit later lol</div>
-					</div>
-					<div class="card card-hover">
-						<div class="card-header">edit later lol</div>
-						<div class="card-header">edit later lol</div>
+					<div class="card card-hover variant-ghost-tertiary">
+						<div class="card-header">人類</div>
+						<div class="p-4">他們可免費使用傳送裝置</div>
 					</div>
 				</div>
             </div>
@@ -229,13 +225,13 @@
 					全球經濟系統
                 </h1>
             </div>
-			<div class="flex justify-around mt-6">
+			<div class="flex justify-around mt-6 items-center">
 				<div>
 					<img src="https://image1.gamme.com.tw/news2/2015/62/45/p56ZoqOcj6SW.jpg" alt="pts" class="w-96 h-96">
 				</div>
 				<div>
 					<h2 class="h2">全球經濟系統</h2>
-					<p>進行冒險以獲取貨幣,在交易中心進行商品交易,獲取道具,武器,藥水...</p>
+					<div class="text-xl">進行冒險以獲取貨幣,在交易中心進行商品交易<br/>獲取道具,武器,藥水...</div>
 				</div>
 			</div>
         </section>

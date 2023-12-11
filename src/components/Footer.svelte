@@ -10,40 +10,40 @@
                 PTS world © 2021~2023
             </div>
         </div>
-        <div class="flex lg:mt-0 mt-20">
+        <div class="flex lg:mt-0 mt-20 text-left">
             <div class="ml-20">
                 <ul>
                     <div class=" mb-4">
-                        使用條款
+                        使用教學
                     </div>
                     <div class=" mb-4">
-                        使用條款
-                    </div>
-                    <div class=" mb-4">
-                        使用條款
+                        開源連結
                     </div>
                 </ul>
             </div>
             <div class="ml-20">
                 <div class=" mb-4">
-                    使用條款
+                    支援伺服器
                 </div>
                 <div class=" mb-4">
-                    使用條款
+                    Discord TW
                 </div>
                 <div class=" mb-4">
-                    使用條款
+                    Bots.gg
+                </div>
+                <div class=" mb-4">
+                    top.gg
                 </div>
             </div>
             <div class="ml-20">
                 <div class=" mb-4">
-                    使用條款
+                    隱私權政策
                 </div>
                 <div class=" mb-4">
                     使用條款
                 </div>
                 <div class=" mb-4">
-                    使用條款
+                    聯絡我們
                 </div>
             </div>
         </div>
