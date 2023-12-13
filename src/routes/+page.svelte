@@ -72,7 +72,7 @@
 	</svelte:fragment>
 </AppBar>
 <div class="max-h-full">
-    <div class="mt-52 lg:mr-32 lg:ml-32">
+    <div class="mt-52">
         <section class="flex justify-center items-center">
             <div>
                 <h1 class="h1 text-left">
@@ -93,7 +93,7 @@
                 <img src="rtd.png" alt="pts" class="w-96 h-96 rounded-full">
             </div>
         </section>
-        <section class="mt-6">
+        <section class="mt-6 mb-40">
                 <div class="snap-x scroll-px-4 snap-mandatory scroll-smooth flex  overflow-x-clip px-4 py-10 ">
                     <Marquee>
                         {#each Array.from({ length: 10 }) as _, i}
@@ -102,7 +102,9 @@
                     </Marquee>
                 </div>
         </section>
-		<section class="mt-6">
+	</div>
+	<div class="mt-6 mx-auto max-w-5xl">
+		<section class="mt-6 mb-40">
 			<div>
 				<h1 class="h1 text-center">
 					獨特的戰鬥系統
@@ -131,7 +133,7 @@
 
 			</div>
 		</section>
-		<section class="mt-6">
+		<section class="mt-6 mb-40">
 			<div>
 				<h1 class="h1 text-center">
 					多種玩法
@@ -152,7 +154,7 @@
 				</div>
 			</div>
 		</section>
-		<section class="mt-6">
+		<section class="mt-6 mb-40">
 			<div>
 				<h1 class="h1 text-center">
 					活躍伺服器
@@ -178,12 +180,12 @@
 				</div>
 			</div>
 		</section>
-        <section class="mt-6">
+        <section class="mt-6 mb-40">
             <div>
                 <h1 class="h1 text-center">
 					眾多的種族可供選擇
                 </h1>
-				<div class="grid-cols-3 gap-4 grid mt-6 ">
+				<div class="lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 grid mt-6 ">
 					<div class="card card-hover variant-ghost-tertiary">
 						<div class="card-header">百鬼神魔法</div>
 						<div class="p-4">擅長精神魔法</div>
@@ -219,7 +221,7 @@
 				</div>
             </div>
         </section>
-        <section class="mt-6">
+        <section class="mt-6 mb-40">
             <div>
                 <h1 class="h1 text-center">
 					全球經濟系統
@@ -235,13 +237,13 @@
 				</div>
 			</div>
         </section>
-        <section class="mt-6">
+        <section class="mt-6 mb-40">
             <div>
                 <h1 class="h1 text-center">
 					想要更多?
                 </h1>
             </div>
-			<div class="flex justify-center">
+			<div class="flex justify-around mt-6 items-center">
 				<h2 class="h2">更多功能等待您探索</h2>
 				<div class="grid-cols-2 gap-4 grid mt-6">
 					<div>11111</div>
