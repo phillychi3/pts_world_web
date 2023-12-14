@@ -74,9 +74,9 @@
 </AppBar>
 <div class="max-h-full">
     <div class="mt-52">
-        <section class="flex justify-center items-center">
+        <section class="flex lg:flex-row flex-col-reverse justify-center items-center">
             <div>
-                <h1 class="h1 text-left">
+                <h1 class="h1 lg:text-left text-center mt-1 lg:mt-0">
                     <span class="bg-gradient-to-br from-pink-500 to-violet-500 bg-clip-text text-transparent box-decoration-clone">
                     最好的娛樂機器人
                     </span>
@@ -91,20 +91,20 @@
 				</div>
             </div>
             <div>
-                <img src="rtd.png" alt="pts" class="w-96 h-96 rounded-full">
+                <img src="rtd.png" alt="pts" class="h-60 w-60  lg:h-96 lg:w-96 rounded-full">
             </div>
         </section>
         <section class="mt-6 mb-40">
                 <div class="snap-x scroll-px-4 snap-mandatory scroll-smooth flex  overflow-x-clip px-4 py-10 ">
                     <Marquee>
                         {#each Array.from({ length: 10 }) as _, i}
-                        <div class="snap-start shrink-0 card py-10 w-40 md:w-80 text-center">{i + 1}</div>
+                        <div class="snap-start shrink-0 card py-10 w-40 md:w-80 text-center">No Data</div>
                         {/each}
                     </Marquee>
                 </div>
         </section>
 	</div>
-	<div class="mt-6 mx-auto max-w-5xl">
+	<div class="mt-6 sm:mx-auto max-w-5xl mx-8">
 		<section class="mt-6 mb-40">
 			<div>
 				<h1 class="h1 text-center">
@@ -156,16 +156,16 @@
 					</div>
 					<div class="grid grid-cols-1 gap-4 mt-6">
 						<div class="card card-hover">
-							<div class="card-header">功能1</div>
-							<div class="p-4">等待打字 - 等待打字 - 等待打字- 等待打字- 等待打字- 等待打字- 等待打字</div>
+							<div class="card-header">多人戰鬥</div>
+							<div class="p-4">與你的好友戰鬥、一起組隊冒險</div>
 						</div>
 						<div class="card card-hover">
-							<div class="card-header">功能2</div>
-							<div class="p-4">等待打字 - 等待打字 - 等待打字- 等待打字- 等待打字- 等待打字- 等待打字</div>
+							<div class="card-header">特殊道具?!</div>
+							<div class="p-4">使用互動式道具，去把物品砸在好友臉上吧!</div>
 						</div>
 						<div class="card card-hover">
-							<div class="card-header">功能3</div>
-							<div class="p-4">等待打字 - 等待打字 - 等待打字- 等待打字- 等待打字- 等待打字- 等待打字</div>
+							<div class="card-header">排行榜</div>
+							<div class="p-4">與好友一同衝擊排行榜</div>
 						</div>
 					</div>
 				</div>
@@ -243,7 +243,7 @@
             </div>
 			<div class="flex justify-around mt-6 items-center">
 				<div>
-					<img src="https://image1.gamme.com.tw/news2/2015/62/45/p56ZoqOcj6SW.jpg" alt="pts" class="w-96 h-96">
+					<img src="https://image1.gamme.com.tw/news2/2015/62/45/p56ZoqOcj6SW.jpg" alt="pts"  class="h-full">
 				</div>
 				<div>
 					<h2 class="h2">全球經濟系統</h2>
@@ -259,11 +259,9 @@
             </div>
 			<div class="flex justify-around mt-6 items-center">
 				<h2 class="h2">更多功能等待您探索</h2>
-				<div class="grid-cols-2 gap-4 grid mt-6">
-					<div>11111</div>
-					<div>11111</div>
-					<div>11111</div>
-					<div>11111</div>
+				<div class="grid-cols-1 gap-4 grid mt-6">
+					<div>公會系統</div>
+					<div>地下城玩法</div>
 				</div>
 			</div>
         </section>
