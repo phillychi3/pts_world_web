@@ -107,13 +107,10 @@
 	<div class="mt-6 sm:mx-auto max-w-5xl mx-8">
 		<section class="mt-6 mb-40">
 			<div>
-				<h1 class="h1 text-center">
-					獨特的戰鬥系統
-				</h1>
-
-				<div class="flex flex-row justify-around mt-6">
+				<div class="flex lg:flex-row flex-col justify-around mt-6 items-center">
 					<div>
-						<img src="https://image1.gamme.com.tw/news2/2015/62/45/p56ZoqOcj6SW.jpg" alt="pts" class="h-full">
+						<!-- <img src="https://image1.gamme.com.tw/news2/2015/62/45/p56ZoqOcj6SW.jpg" alt="pts" class="h-full"> -->
+						<object data="ptsbattle_fix.svg" type="image/svg+xml" class="lg:w-[140%] w-full"/>
 					</div>
 					<div>
 						<h2 class="h2">再也不用看著自動戰鬥了</h2>
@@ -236,11 +233,6 @@
             </div>
         </section>
         <section class="mt-6 mb-40">
-            <div>
-                <h1 class="h1 text-center">
-					全球經濟系統
-                </h1>
-            </div>
 			<div class="flex justify-around mt-6 items-center">
 				<div>
 					<img src="https://image1.gamme.com.tw/news2/2015/62/45/p56ZoqOcj6SW.jpg" alt="pts"  class="h-full">
@@ -252,11 +244,6 @@
 			</div>
         </section>
         <section class="mt-6 mb-40">
-            <div>
-                <h1 class="h1 text-center">
-					想要更多?
-                </h1>
-            </div>
 			<div class="flex justify-around mt-6 items-center">
 				<h2 class="h2">更多功能等待您探索</h2>
 				<div class="grid-cols-1 gap-4 grid mt-6">
