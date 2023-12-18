@@ -1,7 +1,7 @@
 // import { vitePreprocess } from '@sveltejs/kit/vite';
 import { vitePreprocess }  from '@sveltejs/vite-plugin-svelte';
 import adapter from '@sveltejs/adapter-static';
-
+const dev = process.env.NODE_ENV === 'development';
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
 	kit: {
@@ -15,7 +15,7 @@ const config = {
 			}
 		),
 		paths: {
-            base: process.env.NODE_ENV === 'production' ? '/sveltekit-github-pages' : '',
+            base: dev ? '' : '/pts_world_web'
         }
 	},
 

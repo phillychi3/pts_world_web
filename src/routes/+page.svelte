@@ -8,6 +8,7 @@
     import Marquee from "svelte-fast-marquee";
 	import Footer from "../components/Footer.svelte";
 	import { CodeBlock } from '@skeletonlabs/skeleton';
+	import { base } from '$app/paths'
 	let popupSettings = {
 		event: 'focus-click',
 		target: 'popupAutocomplete',
@@ -57,7 +58,7 @@
 			/>
 		</div>
 		<LightSwitch />
-		<a href="/">
+		<a href="{base}/">
 			<i class="fa fa-github text-lg" aria-hidden="true"></i>
 		</a>
 	</svelte:fragment>
@@ -76,7 +77,7 @@
                     </span>
                 </h1>
 				<div class="flex pt-10 justify-center">
-					<a href="/" class="btn variant-filled ml-3 mr-3">邀請到Discord</a>
+					<a href="{base}/" class="btn variant-filled ml-3 mr-3">邀請到Discord</a>
 					<a href="https://discord.gg/m6qKNZTaeR" target="_blank" class="btn variant-filled ml-3 mr-3">加入官方伺服器</a>
 				</div>
             </div>
@@ -99,8 +100,7 @@
 			<div>
 				<div class="flex lg:flex-row flex-col justify-around mt-6 items-center">
 					<div>
-						<!-- <img src="https://image1.gamme.com.tw/news2/2015/62/45/p56ZoqOcj6SW.jpg" alt="pts" class="h-full"> -->
-						<object data="ptsbattle_fix.svg" aria-labelledby="pts battle svg" type="image/svg+xml" class="lg:w-[140%] w-full"/>
+						<object data={base+"/static/ptsbattle_fix.svg"} aria-labelledby="pts battle svg" type="image/svg+xml" class="lg:w-[140%] w-full"/>
 					</div>
 					<div>
 						<h2 class="h2">再也不用看著自動戰鬥了</h2>
