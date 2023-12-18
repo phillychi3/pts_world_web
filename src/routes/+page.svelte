@@ -18,19 +18,9 @@
 
 	let flavorOptions = [
 		{
-			keywords: 'vanilla',
-			label: 'Vanilla',
-			value: 'vanilla'
-		},
-		{
-			keywords: 'apple',
-			label: 'apple',
-			value: 'apple'
-		},
-		{
-			keywords: 'banana',
-			label: 'banana',
-			value: 'banana'
+			keywords: 'nothing',
+			label: 'nothing',
+			value: 'nothing'
 		}
 	];
 
@@ -42,22 +32,22 @@
 	<title>pts world, 最好的娛樂機器人</title>
 </svelte:head>
 
-<AppBar slotDefault="place-self-start" slotTrail="place-content-end" class="top-0 sticky z-50">
+<AppBar slotDefault="place-self-start" slotTrail="place-content-end" class="top-0 sticky z-50 ">
 	<h2 class="h2">PTS World</h2>
 	<svelte:fragment slot="trail">
-		<div class="text-token w-full max-w-[20%]">
+		<div class="text-token w-full lg:max-w-[20%] max-w-[50%]">
 			<input
 				class="input autocomplete"
 				type="search"
 				name="autocomplete-search"
 				bind:value={inputPopupDemo}
-				placeholder="Search..."
+				placeholder="  Search..."
 				use:popup={popupSettings}
 			/>
 		</div>
 		<div
 			data-popup="popupAutocomplete"
-			class="card w-full max-w-[20%] max-h-48 p-4 overflow-y-auto !m-0"
+			class="card w-full lg:max-w-[20%] max-w-[50%] max-h-48 p-4 overflow-y-auto !m-0"
 			tabindex="-1"
 		>
 			<Autocomplete
@@ -77,7 +67,7 @@
         <section class="flex lg:flex-row flex-col-reverse justify-center items-center">
             <div>
                 <h1 class="h1 lg:text-left text-center mt-1 lg:mt-0">
-                    <span class="bg-gradient-to-br from-pink-500 to-violet-500 bg-clip-text text-transparent box-decoration-clone">
+                    <span>
                     最好的娛樂機器人
                     </span>
                     <br>
@@ -87,11 +77,11 @@
                 </h1>
 				<div class="flex pt-10 justify-center">
 					<a href="/" class="btn variant-filled ml-3 mr-3">邀請到Discord</a>
-					<a href="/" class="btn variant-filled ml-3 mr-3">加入官方伺服器</a>
+					<a href="https://discord.gg/m6qKNZTaeR" target="_blank" class="btn variant-filled ml-3 mr-3">加入官方伺服器</a>
 				</div>
             </div>
             <div>
-                <img src="rtd.png" alt="pts" class="h-60 w-60  lg:h-96 lg:w-96 rounded-full">
+                <img src="535f5d1ba91654524e3d7f7a97b3b31f.png" alt="pts" class="h-60 w-60  lg:h-96 lg:w-96 rounded-full">
             </div>
         </section>
         <section class="mt-6 mb-40">
