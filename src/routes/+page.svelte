@@ -100,7 +100,7 @@
 			<div>
 				<div class="flex lg:flex-row flex-col justify-around mt-6 items-center">
 					<div>
-						<object data={base+"/static/ptsbattle_fix.svg"} aria-labelledby="pts battle svg" type="image/svg+xml" class="lg:w-[140%] w-full"/>
+						<object data="ptsbattle_fix.svg" aria-labelledby="pts battle svg" type="image/svg+xml" class="lg:w-[140%] w-full"/>
 					</div>
 					<div>
 						<h2 class="h2">再也不用看著自動戰鬥了</h2>
