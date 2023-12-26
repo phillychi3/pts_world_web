@@ -23,9 +23,11 @@
                     <div class=" mb-4">
                         使用教學
                     </div>
-                    <div class=" mb-4">
-                        開源連結
-                    </div>
+                    <a href="https://github.com/phillychi3/pts_world_web" target="_blank">
+                        <div class=" mb-4">
+                            開源連結
+                        </div>
+                    </a>
                 </ul>
             </div>
             <div class="ml-20">

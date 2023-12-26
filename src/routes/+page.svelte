@@ -58,7 +58,7 @@
 			/>
 		</div>
 		<LightSwitch />
-		<a href="{base}/">
+		<a target="_blank" 	href="https://github.com/phillychi3/pts_world_web">
 			<i class="fa fa-github text-lg" aria-hidden="true"></i>
 		</a>
 	</svelte:fragment>
@@ -188,7 +188,7 @@
                 </h1>
 				<div class="lg:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 grid mt-6 ">
 					<div class="card card-hover variant-ghost-tertiary">
-						<div class="card-header">百鬼神魔法</div>
+						<div class="card-header">百鬼</div>
 						<div class="p-4">擅長精神魔法</div>
 					</div>
 					<div class="card card-hover variant-ghost-tertiary">
@@ -217,7 +217,7 @@
 					</div>
 					<div class="card card-hover variant-ghost-tertiary">
 						<div class="card-header">人類</div>
-						<div class="p-4">他們可免費使用傳送裝置</div>
+						<div class="p-4">可免費使用傳送裝置</div>
 					</div>
 				</div>
             </div>
@@ -240,6 +240,12 @@
 					<div>公會系統</div>
 					<div>地下城玩法</div>
 				</div>
+			</div>
+        </section>
+        <section class="mt-6 mb-40">
+			<div class=" flex flex-col justify-center items-center ">
+				<h2 class="h2 mb-10 bg-gradient-to-br from-sky-500 to-violet-500 bg-clip-text text-transparent box-decoration-clone">瞭解更多</h2>
+				<a href="https://discord.gg/m6qKNZTaeR" target="_blank" class="btn variant-filled mx-3 p-4"><i class="fa-brands fa-discord mr-2"></i>加入官方伺服器</a>
 			</div>
         </section>
     </div>
