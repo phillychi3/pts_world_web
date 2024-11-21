@@ -1,7 +1,3 @@
-<script>
-	import Footer from '../../../components/Ptsworld_Footer.svelte';
-</script>
-
 <div class="container mx-auto px-4 py-4">
 	<h2 class="h2">隱私權政策</h2>
 	<p>
@@ -30,4 +26,3 @@
 	<br />
 	<p>最後更新時間 2023/12/26</p>
 </div>
-<Footer />

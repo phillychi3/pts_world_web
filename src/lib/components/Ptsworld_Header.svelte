@@ -1,16 +1,16 @@
 <script lang="ts">
-	import { AppBar } from '@skeletonlabs/skeleton';
-	import { popup, type PopupSettings } from '@skeletonlabs/skeleton';
-	import { Autocomplete } from '@skeletonlabs/skeleton';
-	import { LightSwitch } from '@skeletonlabs/skeleton';
+	import { AppBar } from '@skeletonlabs/skeleton'
+	import { popup, type PopupSettings } from '@skeletonlabs/skeleton'
+	import { Autocomplete } from '@skeletonlabs/skeleton'
+	import { LightSwitch } from '@skeletonlabs/skeleton'
 
 	let popupSettings: PopupSettings = {
 		event: 'focus-click', // 必須是 'focus-click' | 'click' | 'hover' | 'focus-blur' 其中之一
 		target: 'popupAutocomplete',
 		placement: 'bottom'
-	};
+	}
 
-	let inputPopupDemo = '';
+	let inputPopupDemo = ''
 
 	let flavorOptions = [
 		{
@@ -18,17 +18,17 @@
 			label: 'nothing',
 			value: 'nothing'
 		}
-	];
+	]
 
 	interface AutocompleteEvent {
 		detail: {
-			label: string;
-			value: string;
-		};
+			label: string
+			value: string
+		}
 	}
 
 	function onPopupDemoSelect(event: AutocompleteEvent): void {
-		inputPopupDemo = event.detail.label;
+		inputPopupDemo = event.detail.label
 	}
 </script>
 
@@ -57,8 +57,8 @@
 			/>
 		</div>
 		<LightSwitch />
-		<a target="_blank" href="https://github.com/phillychi3/pts_world_web">
-			<i class="fa fa-github text-lg" aria-hidden="true"></i>
+		<a href="/">
+			<i class="fa-solid fa-house text-lg" aria-hidden="true"></i>
 		</a>
 	</svelte:fragment>
 </AppBar>

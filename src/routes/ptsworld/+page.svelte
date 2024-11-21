@@ -1,7 +1,7 @@
 <script>
-	import Marquee from 'svelte-fast-marquee';
-	import { CodeBlock } from '@skeletonlabs/skeleton';
-	import { base } from '$app/paths';
+	import Marquee from 'svelte-fast-marquee'
+	import { CodeBlock } from '@skeletonlabs/skeleton'
+	import { base } from '$app/paths'
 </script>
 
 <svelte:head>
@@ -39,7 +39,7 @@
 		<section class="mt-6 mb-40">
 			<div class="snap-x scroll-px-4 snap-mandatory scroll-smooth flex overflow-x-clip px-4 py-10">
 				<Marquee>
-					{#each Array.from({ length: 10 }) as _, i}
+					{#each Array.from({ length: 10 }) as _}
 						<div class="snap-start shrink-0 card py-10 w-40 md:w-80 text-center">No Data</div>
 					{/each}
 				</Marquee>

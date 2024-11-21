@@ -1,6 +1,5 @@
 <script>
-	import Footer from '../../../components/Ptsworld_Footer.svelte';
-	import { base } from '$app/paths';
+	import { base } from '$app/paths'
 </script>
 
 <div class="container mx-auto px-4 py-4">
@@ -27,4 +26,3 @@
 	<br />
 	<p>最後更新時間 2023/12/26</p>
 </div>
-<Footer />
