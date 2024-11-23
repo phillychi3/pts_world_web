@@ -3,6 +3,7 @@
 	import { popup, type PopupSettings } from '@skeletonlabs/skeleton'
 	import { Autocomplete } from '@skeletonlabs/skeleton'
 	import { LightSwitch } from '@skeletonlabs/skeleton'
+	import { base } from '$app/paths'
 
 	let popupSettings: PopupSettings = {
 		event: 'focus-click', // 必須是 'focus-click' | 'click' | 'hover' | 'focus-blur' 其中之一
@@ -57,7 +58,7 @@
 			/>
 		</div>
 		<LightSwitch />
-		<a href="/">
+		<a href="{base}/">
 			<i class="fa-solid fa-house text-lg" aria-hidden="true"></i>
 		</a>
 	</svelte:fragment>
