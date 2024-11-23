@@ -8,8 +8,8 @@
 		<div class="flex items-center space-x-4">
 			<h2 class="h2 font-bold text-2xl">Nothing Bot</h2>
 			<div class="flex-row items-center space-y-0 space-x-4 text-sm hidden md:flex">
-				<a href="{base}/docs" class="hover:text-primary-500 transition-colors duration-200">Docs</a>
-				<a href="{base}/panel" class="hover:text-primary-500 transition-colors duration-200">Panel</a>
+				<a href="{base}/" class="hover:text-primary-500 transition-colors duration-200">Docs</a>
+				<a href="{base}/" class="hover:text-primary-500 transition-colors duration-200">Panel</a>
 				<a href="{base}/ptsworld" class="hover:text-primary-500 transition-colors duration-200"
 					>ptsworld</a
 				>

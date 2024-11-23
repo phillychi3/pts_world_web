@@ -37,10 +37,10 @@
 				</a>
 			</div>
 			<div class="ml-20">
-				<a href="{base}/privacy">
+				<a href="{base}/">
 					<div class=" mb-4">隱私權政策</div>
 				</a>
-				<a href="{base}/terms">
+				<a href="{base}/">
 					<div class=" mb-4">使用條款</div>
 				</a>
 				<div class=" mb-4">聯絡我們</div>
