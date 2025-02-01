@@ -34,7 +34,7 @@
 </script>
 
 <AppBar slotDefault="place-self-start" slotTrail="place-content-end" class="top-0 sticky z-50 ">
-	<h2 class="h2">PTS World</h2>
+	<h2 class="h2 font-bold text-2xl">PTS World</h2>
 	<svelte:fragment slot="trail">
 		<div class="text-token w-full lg:max-w-[20%] max-w-[50%]">
 			<input

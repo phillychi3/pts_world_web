@@ -10,7 +10,7 @@
 			<div>
 				<!-- icon here -->
 			</div>
-			<div>PTS world © 2021~2023</div>
+			<div>PTS world © 2021~2025</div>
 		</div>
 		<div class="flex lg:mt-0 mt-20 text-left sm:flex-row flex-col">
 			<div class="ml-20">

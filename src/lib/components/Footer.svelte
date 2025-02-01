@@ -4,13 +4,13 @@
 
 <footer class="footer text-center py-2 bg-surface-100-800-token">
 	<div
-		class="flex lg:flex-row flex-col content pt-20 pb-20 mx-auto my-0 justify-between lg:w-4/5 w-full"
+		class="flex lg:flex-row flex-col content pt-14 pb-14 mx-auto my-0 justify-between lg:w-4/5 w-full"
 	>
 		<div class="flex-col">
 			<div>
 				<!-- icon here -->
 			</div>
-			<div>Nothing Bot © 2021~2024</div>
+			<div>Nothing Bot © 2023~2025</div>
 		</div>
 		<div class="flex lg:mt-0 mt-20 text-left sm:flex-row flex-col">
 			<div class="ml-20">
