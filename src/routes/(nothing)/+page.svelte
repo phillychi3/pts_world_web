@@ -14,8 +14,14 @@
 		</h1>
 		<p class="mb-12 text-3xl md:text-4xl">您的多功能 Discord 機器人助手</p>
 		<div class="flex justify-center gap-4">
-			<a href="/invite" class="btn variant-filled-primary">邀請機器人</a>
-			<a href="/discord" class="btn variant-filled">加入支援伺服器</a>
+			<a
+				href="https://discord.com/oauth2/authorize?client_id=1044529058689593435&permissions=1641549393014&scope=bot%20applications.commands"
+				target="_blank"
+				class="btn variant-filled-primary">邀請機器人</a
+			>
+			<a href="https://discord.gg/m6qKNZTaeR" target="_blank" class="btn variant-filled"
+				>加入支援伺服器</a
+			>
 		</div>
 	</div>
 </div>

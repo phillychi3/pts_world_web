@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte'
 	import { gsap } from 'gsap'
 
-	function horizontalLoop(items, direction) {
+	function horizontalLoop(items: any[], direction: number) {
 		items = gsap.utils.toArray(items)
 		const tl = gsap.timeline({
 			repeat: -1,
@@ -18,7 +18,7 @@
 				{
 					xPercent: moveAmount,
 					duration: 3,
-                    ease: 'none',
+					ease: 'none'
 				},
 				0
 			)
@@ -29,14 +29,14 @@
 	onMount(() => {
 		const rows = gsap.utils.toArray('.bg-slider')
 		rows.forEach((row, i) => {
-			const items = gsap.utils.toArray('.one-line', row)
+			const items = gsap.utils.toArray('.one-line', row as HTMLElement)
 			const direction = i % 2 === 0 ? -1 : 1
 			horizontalLoop(items, direction).play()
 		})
 	})
 </script>
 
-<section>
+<section class=" relative flex flex-col gap-8 overflow-hidden min-h-screen p-[2rem]">
 	<div class="bg-slider">
 		<div class="one-line">
 			<div>
@@ -327,27 +327,17 @@
 		margin-top: 20px;
 	}
 
-	section {
-		position: relative;
-		display: flex;
-		flex-direction: column;
-		gap: 2rem;
-		overflow: hidden;
-		padding: 2rem 0;
-        height: 100vh;
-	}
-
 	span {
 		font-size: 100px;
 		display: inline-block;
 	}
 
-    .e-text {
-        color: #c42e2e;
-    }
+	.e-text {
+		color: #c42e2e;
+	}
 
-    .u-text {
-        color: #00000000;
-        -webkit-text-stroke: 1px #2d2dc2;
-    }
+	.u-text {
+		color: #00000000;
+		-webkit-text-stroke: 1px #2d2dc2;
+	}
 </style>
