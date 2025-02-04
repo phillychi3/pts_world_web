@@ -11,7 +11,7 @@
 				<a href="{base}/" class="hover:text-primary-500 transition-colors duration-200">Docs</a>
 				<a href="{base}/" class="hover:text-primary-500 transition-colors duration-200">Panel</a>
 				<a href="{base}/ptsworld" class="hover:text-primary-500 transition-colors duration-200"
-					>ptsworld</a
+					>RPG</a
 				>
 			</div>
 		</div>
