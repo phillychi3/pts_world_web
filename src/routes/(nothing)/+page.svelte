@@ -2,6 +2,7 @@
 	import { Accordion, AccordionItem } from '@skeletonlabs/skeleton'
 	import About from './aboutbot.svelte'
     import Fun from './fun.svelte'
+    import Music from './music.svelte'
 </script>
 
 <svelte:head>
@@ -28,6 +29,7 @@
 </div>
 <About />
 <Fun />
+<Music />
 <div class="container mx-auto px-4 py-16">
 	<h2 class="h2 text-center mb-12">更多功能</h2>
 

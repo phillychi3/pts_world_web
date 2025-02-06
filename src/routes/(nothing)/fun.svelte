@@ -20,8 +20,8 @@
 		})
 
 		gsap.set(sections, {
-			xPercent: 400,
-			yPercent: 20
+			xPercent: 500,
+			yPercent: 0
 		})
 
 		sections.forEach((section, i) => {

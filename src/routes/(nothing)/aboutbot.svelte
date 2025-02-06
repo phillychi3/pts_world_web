@@ -36,7 +36,7 @@
 	})
 </script>
 
-<section class=" relative flex flex-col gap-8 overflow-hidden min-h-screen p-[2rem]">
+<section class=" relative flex flex-col gap-8 overflow-hidden min-h-screen">
 	<div class="bg-slider">
 		<div class="one-line">
 			<div>
