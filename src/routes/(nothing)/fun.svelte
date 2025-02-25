@@ -6,7 +6,8 @@
 	gsap.registerPlugin(ScrollTrigger)
 
 	onMount(() => {
-		const sections = gsap.utils.toArray('.fun-section')
+		const sections = gsap.utils.toArray<HTMLElement>('.fun-section')
+		const container = document.querySelector('.fun-container')
 
 		const tl = gsap.timeline({
 			scrollTrigger: {
@@ -15,13 +16,24 @@
 				start: 'top top',
 				end: '+=200%',
 				scrub: 1,
-				markers: true,
+				markers: true
 			}
+		})
+
+		gsap.set(container, {
+			xPercent: 100,
+			opacity: 1
 		})
 
 		gsap.set(sections, {
 			xPercent: 500,
 			yPercent: 0
+		})
+
+		tl.to(container, {
+			xPercent: -100,
+			duration: 1.5,
+			ease: 'none'
 		})
 
 		sections.forEach((section, i) => {
