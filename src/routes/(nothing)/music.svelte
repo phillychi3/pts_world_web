@@ -222,21 +222,11 @@
 		<section class="min-h-screen flex items-center p-8">
 			<div class="">
 				<h2 class="text-4xl font-bold mb-4 text-orange-500">SoundCloud</h2>
-				<p class="text-lg mb-4">
-					Stream your favorite music directly from SoundCloud. Discover new artists and tracks.
-				</p>
+				<p class="text-lg mb-4">穩定的播放你最喜歡的音樂</p>
 				<ul class="space-y-2">
 					<li class="flex items-center">
 						<span class="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>
-						Stream millions of tracks
-					</li>
-					<li class="flex items-center">
-						<span class="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>
-						Follow your favorite artists
-					</li>
-					<li class="flex items-center">
-						<span class="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>
-						Create and share playlists
+						尋找最新的音樂
 					</li>
 				</ul>
 			</div>
@@ -249,22 +239,15 @@
 		>
 			<div class="">
 				<h2 class="text-4xl font-bold mb-4 text-red-600">YouTube</h2>
-				<p class="text-lg mb-4">
-					Watch music videos and live performances on YouTube. Access the world's largest video
-					platform.
-				</p>
+				<p class="text-lg mb-4">使用機器人播放你最喜歡的youtube音樂</p>
 				<ul class="space-y-2">
 					<li class="flex items-center">
 						<span class="w-2 h-2 bg-red-600 rounded-full mr-2"></span>
-						Watch official music videos
+						支援播放清單
 					</li>
 					<li class="flex items-center">
 						<span class="w-2 h-2 bg-red-600 rounded-full mr-2"></span>
-						Discover live performances
-					</li>
-					<li class="flex items-center">
-						<span class="w-2 h-2 bg-red-600 rounded-full mr-2"></span>
-						Create video playlists
+						自動推薦下一首歌曲
 					</li>
 				</ul>
 			</div>

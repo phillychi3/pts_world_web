@@ -63,12 +63,12 @@
 
 			<div class="fun-section card p-8 variant-glass absolute">
 				<h1 class="h1 mb-4">每日占譜</h1>
-				<p class="text-lg">每日抽取老婆</p>
+				<p class="text-lg">獲取最新的運勢</p>
 			</div>
 
 			<div class="fun-section card p-8 variant-glass absolute">
 				<h1 class="h1 mb-4">抽取貓貓</h1>
-				<p class="text-lg">每日抽取老婆</p>
+				<p class="text-lg">獲取貓咪圖片</p>
 			</div>
 		</div>
 	</section>
