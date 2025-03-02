@@ -6,10 +6,14 @@
 <header class="sticky top-0 z-30 w-full bg-surface-100-800-token shadow-lg">
 	<div class="max-w-[1300px] mx-auto px-4 py-3 flex items-center justify-between">
 		<div class="flex items-center space-x-4">
-			<h2 class="h2 font-bold text-2xl">Nothing Bot</h2>
+			<a href="{base}/" class="flex items-center space-x-2">
+				<h2 class="h2 font-bold text-2xl">Nothing Bot</h2>
+			</a>
 			<div class="flex-row items-center space-y-0 space-x-4 text-sm hidden md:flex">
 				<a href="{base}/" class="hover:text-primary-500 transition-colors duration-200">Docs</a>
-				<a href="{base}/" class="hover:text-primary-500 transition-colors duration-200">Panel</a>
+				<a href="{base}/panel" class="hover:text-primary-500 transition-colors duration-200"
+					>Panel</a
+				>
 				<a href="{base}/ptsworld" class="hover:text-primary-500 transition-colors duration-200"
 					>RPG</a
 				>

@@ -1,9 +1,9 @@
 <script>
 	import { Accordion, AccordionItem } from '@skeletonlabs/skeleton'
 	import About from './aboutbot.svelte'
-    import Fun from './fun.svelte'
-    import Music from './music.svelte'
-    import Game from './rpg.svelte'
+	import Fun from './fun.svelte'
+	import Music from './music.svelte'
+	import Game from './rpg.svelte'
 </script>
 
 <svelte:head>

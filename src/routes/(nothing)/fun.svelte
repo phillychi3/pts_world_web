@@ -15,8 +15,7 @@
 				pin: '.pin-section',
 				start: 'top top',
 				end: '+=200%',
-				scrub: 1,
-				markers: true
+				scrub: 1
 			}
 		})
 
