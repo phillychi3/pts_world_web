@@ -4,6 +4,7 @@
 
 	$: user = data?.user
 	$: isAuthenticated = user?.discord?.authenticated || false
+
 </script>
 
 <div>
@@ -20,14 +21,19 @@
 				{/if}
 			</div>
 		</div>
+		<slot></slot>
 	{:else}
-		<div class="login-prompt">
-			<p>您尚未登入 Discord</p>
-			<a href="/api/auth" class="login-btn">使用 Discord 登入</a>
+		<div class=" from-surface-900 to-surface-800">
+			<div class="mx-auto px-4 text-center py-32">
+				<h1 class="text-2xl">登入</h1>
+				<a
+					href="/api/auth"
+					class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+					>使用 Discord 登入</a
+				>
+			</div>
 		</div>
 	{/if}
-
-	<slot></slot>
 </div>
 
 <style>
