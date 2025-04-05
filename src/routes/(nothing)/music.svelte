@@ -14,6 +14,7 @@
 	}
 	let isPlaying = false
 	let isMobile = false
+	let isloading = true
 
 	function togglePlay() {
 		isPlaying = !isPlaying
@@ -27,6 +28,7 @@
 		checkMobile()
 
 		window.addEventListener('resize', checkMobile)
+		isloading = false
 
 		if (!isMobile) {
 			gsap.set('.music-player', {
@@ -123,7 +125,9 @@
 <div class="min-h-[200vh]" id="musicplace">
 	{#if !isMobile}
 		<div
-			class="music-player fixed left-0 top-1/4 w-64 shadow-xl z-30 rounded-r-lg p-4 transition-all duration-300"
+			class="music-player fixed left-0 top-1/4 w-64 shadow-xl z-30 rounded-r-lg p-4 transition-all duration-300 {isloading
+				? 'hidden'
+				: ''}"
 			class:soundcloud-player={currentPlatform === 'soundcloud'}
 			class:youtube-player={currentPlatform === 'youtube'}
 		>
@@ -180,7 +184,10 @@
 			</div>
 
 			<div class="controls flex justify-between">
-				<button class="p-2 rounded-full text-white hover:bg-gray-700 transition">
+				<button
+					class="p-2 rounded-full text-white hover:bg-gray-700 transition"
+					aria-label="Previous track"
+				>
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6 fill-current">
 						<path d="M6,18V6H8V18H6M9.5,12L18,6V18L9.5,12Z" />
 					</svg>
@@ -189,6 +196,7 @@
 				<button
 					on:click={togglePlay}
 					class="p-2 rounded-full text-white hover:bg-gray-700 transition"
+					aria-label={isPlaying ? 'Pause' : 'Play'}
 				>
 					{#if isPlaying}
 						<svg
@@ -208,8 +216,10 @@
 						</svg>
 					{/if}
 				</button>
-
-				<button class="p-2 rounded-full text-white hover:bg-gray-700 transition">
+				<button
+					class="p-2 rounded-full text-white hover:bg-gray-700 transition"
+					aria-label="Next track"
+				>
 					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="w-6 h-6 fill-current">
 						<path d="M16,18H18V6H16M6,18L14.5,12L6,6V18Z" />
 					</svg>
