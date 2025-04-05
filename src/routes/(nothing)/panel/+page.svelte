@@ -18,29 +18,31 @@
 	{#if hasGuilds}
 		<div class="guilds-grid">
 			{#each discordGuilds as guild}
-				<div class="guild-card">
-					<div class="guild-header">
-						{#if guild.icon}
-							<img src={guild.icon} alt="{guild.name} icon" class="guild-icon" />
-						{:else}
-							<div class="guild-icon-placeholder">
-								{guild.name.substring(0, 2)}
-							</div>
-						{/if}
-						<h3 class="guild-name">{guild.name}</h3>
+				{#if guild.isAdmin || guild.owner}
+					<div class="guild-card">
+						<div class="guild-header">
+							{#if guild.icon}
+								<img src={guild.icon} alt="{guild.name} icon" class="guild-icon" />
+							{:else}
+								<div class="guild-icon-placeholder">
+									{guild.name.substring(0, 2)}
+								</div>
+							{/if}
+							<h3 class="guild-name">{guild.name}</h3>
+						</div>
+						<div class="guild-meta">
+							{#if guild.owner}
+								<span class="badge owner-badge">伺服器擁有者</span>
+							{/if}
+							{#if guild.isAdmin}
+								<span class="badge admin-badge">管理員</span>
+							{/if}
+						</div>
+						<div class="guild-actions">
+							<button class="view-button">查看詳情</button>
+						</div>
 					</div>
-					<div class="guild-meta">
-						{#if guild.owner}
-							<span class="badge owner-badge">伺服器擁有者</span>
-						{/if}
-						{#if guild.isAdmin}
-							<span class="badge admin-badge">管理員</span>
-						{/if}
-					</div>
-					<div class="guild-actions">
-						<button class="view-button">查看詳情</button>
-					</div>
-				</div>
+				{/if}
 			{/each}
 		</div>
 	{:else}
