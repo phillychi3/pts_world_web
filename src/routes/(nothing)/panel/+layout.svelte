@@ -1,10 +1,9 @@
 <script>
 	/** @type {{ data: import('./$types').LayoutData, children: import('svelte').Snippet }} */
-	export let data
+	const { data } = $props()
 
-	$: user = data?.user
-	$: isAuthenticated = user?.discord?.authenticated || false
-
+	const user = $derived(data?.user)
+	const isAuthenticated = $derived(user?.discord?.authenticated || false)
 </script>
 
 <div>
@@ -21,7 +20,7 @@
 				{/if}
 			</div>
 		</div>
-		<slot></slot>
+		<slot />
 	{:else}
 		<div class=" from-surface-900 to-surface-800">
 			<div class="mx-auto px-4 text-center py-32">

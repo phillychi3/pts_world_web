@@ -38,6 +38,7 @@
 		"@skeletonlabs/tw-plugin": "^0.2.4",
 		"cookie": "^1.0.2",
 		"gsap": "^3.12.7",
+		"mongodb": "^6.15.0",
 		"svelte-fast-marquee": "^0.7.0"
 	}
 }

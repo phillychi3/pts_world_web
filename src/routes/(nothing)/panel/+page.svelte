@@ -1,9 +1,8 @@
 <script>
-	/** @type {import('./$types').PageData} */
-	export let data
+	const { data } = $props()
 
-	$: discordGuilds = data.discordGuilds || []
-	$: hasGuilds = discordGuilds.length > 0
+	const discordGuilds = $derived(data.discordGuilds || [])
+	const hasGuilds = $derived(discordGuilds.length > 0)
 </script>
 
 <div class="container">
