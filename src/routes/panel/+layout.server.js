@@ -2,7 +2,6 @@
 export async function load({ locals }) {
 	try {
 		const { discord } = locals || {}
-		console.log('Discord locals:', discord)
 
 		if (discord && discord.access_token) {
 			try {
