@@ -1,8 +1,13 @@
 <script>
+	import { goto } from '$app/navigation'
 	const { data } = $props()
 
 	const discordGuilds = $derived(data.discordGuilds || [])
 	const hasGuilds = $derived(discordGuilds.length > 0)
+
+	function gotoguild(guild) {
+		goto(`/panel/guild/${guild.id}`)
+	}
 </script>
 
 <div class="container">
@@ -38,7 +43,7 @@
 							{/if}
 						</div>
 						<div class="guild-actions">
-							<button class="view-button">查看詳情</button>
+							<button class="view-button" onclick={() => gotoguild(guild)}>查看詳情</button>
 						</div>
 					</div>
 				{/if}

@@ -2,6 +2,20 @@
 export async function load({ locals, params, fetch }) {
 	const { discord } = locals || {}
 
+	if (!params.id) {
+		return {
+			guild: null,
+			error: 'Guild ID is required'
+		}
+	}
+
+	if (!params.id.match(/^\d+$/)) {
+		return {
+			guild: null,
+			error: 'Invalid Guild ID'
+		}
+	}
+
 	if (discord && discord.access_token) {
 		try {
 			const response = await fetch(`/api/nothing/getGuildData/${params.id}`, {
@@ -14,9 +28,14 @@ export async function load({ locals, params, fetch }) {
 				}
 			})
 			if (!response.ok) {
+				if (response.status === 403) {
+					return {
+						guild: null,
+						error: 'You do not have permission to access this guild.'
+					}
+				}
 				const errorText = await response.text()
 				console.error('API error:', errorText)
-				throw new Error(`API responded with ${response.status}: ${errorText}`)
 			}
 			const guildData = await response.json()
 			return {

