@@ -3,6 +3,10 @@
 	let { data, children } = $props()
 	import { page } from '$app/state'
 	import { goto } from '$app/navigation'
+	import { onMount } from 'svelte'
+	import { endNavigation, startNavigation } from '$lib/stores/navigation'
+
+	let isLoading = $state(true)
 
 	const guild = $derived(data?.guild)
 	const re = new RegExp('^/panel/guild/\\d+/(.+)$')
@@ -10,7 +14,10 @@
 	const path = match ? match[1] : ''
 
 	const currentPath = $derived(path)
-	function go(path) {
+	/**
+	 * @param {string} path
+	 */
+	async function go(path) {
 		let guildId
 		if (guild?.guild_id) {
 			const highPart = BigInt(guild.guild_id.high) * BigInt(4294967296)
@@ -20,11 +27,32 @@
 			guildId = page.params.id
 		}
 
+		startNavigation()
+
 		const newPath = `/panel/guild/${guildId}/${path}`
 		if (newPath !== page.url.pathname) {
-			goto(newPath)
+			await goto(newPath)
 		}
 	}
+
+	onMount(() => {
+		setTimeout(() => {
+			isLoading = false
+
+			endNavigation()
+		}, 100)
+	})
+
+	$effect(() => {
+		if (page.params.id) {
+			isLoading = true
+			setTimeout(() => {
+				isLoading = false
+
+				endNavigation()
+			}, 100)
+		}
+	})
 </script>
 
 <div class="flex min-h-screen bg-gray-100">
@@ -115,7 +143,7 @@
 		</div>
 	{/if}
 
-	<div class="flex-grow p-6">
+	<div class="flex-grow p-6 overflow-auto">
 		{@render children()}
 	</div>
 </div>

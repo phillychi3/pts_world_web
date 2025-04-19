@@ -59,3 +59,4 @@ export async function load({ locals }) {
 		}
 	}
 }
+export const prerender = false

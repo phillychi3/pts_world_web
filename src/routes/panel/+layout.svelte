@@ -1,4 +1,6 @@
 <script>
+	import LoadingOverlay from '$lib/components/LoadingOverlay.svelte'
+
 	/** @type {{ data: import('./$types').LayoutData, children: import('svelte').Snippet }} */
 	const { data, children } = $props()
 
@@ -6,6 +8,7 @@
 	const isAuthenticated = $derived(user?.discord?.authenticated || false)
 </script>
 
+<LoadingOverlay />
 <div>
 	{#if isAuthenticated}
 		<div class="user-profile">

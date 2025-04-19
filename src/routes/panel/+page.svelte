@@ -1,12 +1,19 @@
 <script>
 	import { goto } from '$app/navigation'
+	import { startNavigation } from '$lib/stores/navigation'
 	const { data } = $props()
 
 	const discordGuilds = $derived(data.discordGuilds || [])
 	const hasGuilds = $derived(discordGuilds.length > 0)
 
-	function gotoguild(guild) {
-		goto(`/panel/guild/${guild.id}`)
+	/**
+	 * @param {{ id: any; }} guild
+	 */
+	async function gotoguild(guild) {
+		// 在導航前啟動載入動畫
+		startNavigation()
+		// 執行導航
+		await goto(`/panel/guild/${guild.id}`)
 	}
 </script>
 

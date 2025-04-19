@@ -20,7 +20,7 @@ export async function HaveGuildPremission(guildid, dc_access_token) {
 		console.error('Error fetching guilds:', guilds.message)
 		return false
 	}
-	const hasPermission = guilds.some((guild) => {
+	const hasPermission = guilds.some((/** @type {{ id: string; permissions: string | number | bigint | boolean; owner_id: any; }} */ guild) => {
 		return (
 			(guild.id === guildid && (BigInt(guild.permissions) & BigInt(0x8)) !== BigInt(0)) ||
 			user.id === guild.owner_id ||
