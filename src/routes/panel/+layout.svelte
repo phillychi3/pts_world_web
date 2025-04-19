@@ -9,48 +9,31 @@
 </script>
 
 <LoadingOverlay />
-<div>
-	{#if isAuthenticated}
-		<div class="user-profile">
+
+{#if isAuthenticated}
+	<div class="min-h-screen flex flex-col">
+		<div class="flex items-center p-4 bg-white sticky top-0 z-30 w-full shadow-sm">
 			{#if user.discord.avatar}
-				<img src={user.discord.avatar} alt="Discord Avatar" class="avatar" />
+				<img src={user.discord.avatar} alt="Discord Avatar" class="w-10 h-10 rounded-full" />
 			{/if}
-			<div class="user-info">
-				<h3>歡迎, {user.discord.username}</h3>
-				<p>Discord ID: {user.discord.id}</p>
-				{#if user.discord.email}
-					<p>Email: {user.discord.email}</p>
-				{/if}
+			<div class="user-info ml-3">
+				<h3 class="font-medium">歡迎, {user.discord.username}</h3>
+				<p class="text-sm text-gray-600">Discord ID: {user.discord.id}</p>
 			</div>
 		</div>
-		{@render children()}
-	{:else}
-		<div class=" from-surface-900 to-surface-800">
-			<div class="mx-auto px-4 text-center py-32">
-				<h1 class="text-2xl">登入</h1>
-				<a
-					href="/api/auth"
-					class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-					>使用 Discord 登入</a
-				>
-			</div>
+		<div class="flex-grow overflow-auto">
+			{@render children()}
 		</div>
-	{/if}
-</div>
-
-<style>
-	.user-profile {
-		display: flex;
-		align-items: center;
-		padding: 0.5rem;
-		border-radius: 4px;
-		background-color: #f5f5f5;
-	}
-
-	.avatar {
-		width: 48px;
-		height: 48px;
-		border-radius: 50%;
-		margin-right: 1rem;
-	}
-</style>
+	</div>
+{:else}
+	<div class="from-surface-900 to-surface-800 min-h-screen">
+		<div class="mx-auto px-4 text-center py-32">
+			<h1 class="text-2xl">登入</h1>
+			<a
+				href="/api/auth"
+				class="inline-block bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+				>使用 Discord 登入</a
+			>
+		</div>
+	</div>
+{/if}

@@ -57,9 +57,9 @@
 
 <div class="flex min-h-screen bg-gray-100">
 	{#if !data?.error}
-		<div class="w-64 bg-white shadow-md">
+		<div class="w-64 bg-white shadow-md fixed h-screen">
 			<div class="flex flex-col h-full">
-				<div class="flex-grow">
+				<div class="flex-grow overflow-y-auto">
 					<nav class="px-4 py-6 space-y-2">
 						<button
 							type="button"
@@ -125,7 +125,7 @@
 					</nav>
 				</div>
 
-				<div class="p-4 border-t border-gray-200 text-center">
+				<div class="p-4 border-t border-gray-200 text-center sticky bottom-0 bg-white">
 					<div class="font-bold">伺服器 ID</div>
 					{#if guild?.guild_id}
 						<div class="text-sm text-gray-500">
@@ -141,9 +141,13 @@
 				</div>
 			</div>
 		</div>
-	{/if}
 
-	<div class="flex-grow p-6 overflow-auto">
-		{@render children()}
-	</div>
+		<div class="ml-64 flex-grow p-6">
+			{@render children()}
+		</div>
+	{:else}
+		<div class="flex-grow p-6">
+			{@render children()}
+		</div>
+	{/if}
 </div>

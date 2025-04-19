@@ -55,3 +55,4 @@ export async function load({ locals, params, fetch }) {
 		error: 'No Discord token available'
 	}
 }
+export const prerender = false
