@@ -1,0 +1,65 @@
+{
+  "_id": "638f8538c847ea84a55c000b",
+  "guild_id": {
+      "low": 1803550740,
+      "high": 145172045,
+      "unsigned": false
+  },
+  "language": "",
+  "welcome": {
+      "channel": 0,
+      "message": "歡迎 {user} 來到 {server}!"
+  },
+  "leave": {
+      "channel": 0,
+      "message": "{user} 離開了 {server}!"
+  },
+  "anime": {
+      "channel": {
+          "low": -507371460,
+          "high": 224241450,
+          "unsigned": false
+      },
+      "message": "{anime}更新了!",
+      "is_enabled": true,
+      "webhook": "https://discord.com/api/webhooks/1105485835949854722/1EhMVkENDkSalW-K6xAYOoGyM4d-bo4VswZxLeJFku33948hb_RzppwCPogGpF4LFwGV"
+  },
+  "lockvoice": {
+      "1049757626126323712": {
+          "password": "1234",
+          "alarmchannel": {
+              "low": -1320157183,
+              "high": 196959299,
+              "unsigned": false
+          },
+          "targetchannel": {
+              "low": -1484513179,
+              "high": 244412144,
+              "unsigned": false
+          }
+      }
+  },
+  "ispro": true,
+  "autovoice": [],
+  "active_voicechannel": [],
+  "role_dropdown": {},
+  "User_Activity": false,
+  "User_Activity_cache": {},
+  "User_Activity_archive": {},
+  "Daily_wife": {},
+  "Aleardy_be_wife": [],
+  "Disable_wife_users": [
+      "838354144174669834"
+  ],
+  "isfixtwitter": false,
+  "isfixnhentai": true,
+  "isfixpixiv": true,
+  "anti_fish": true,
+  "publish": false,
+  "tts": {
+      "channel": 0,
+      "is_enabled": false,
+      "users": []
+  },
+  "r18on": false
+}

@@ -13,7 +13,7 @@
 	const match = re.exec(page.url.pathname)
 	const path = match ? match[1] : ''
 
-	const currentPath = $derived(path)
+	let currentPath = $state(path)
 	/**
 	 * @param {string} path
 	 */
@@ -32,6 +32,7 @@
 		const newPath = `/panel/guild/${guildId}/${path}`
 		if (newPath !== page.url.pathname) {
 			await goto(newPath)
+			currentPath = path
 		}
 	}
 
