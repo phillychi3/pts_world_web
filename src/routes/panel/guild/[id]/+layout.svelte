@@ -93,24 +93,24 @@
 							<span>身分組</span>
 						</button>
 						<button
-							class="flex items-center p-3 rounded-lg {currentPath === 'voice'
+							class="flex items-center p-3 rounded-lg {currentPath === 'lockvoice'
 								? 'bg-blue-100 text-blue-700'
 								: 'hover:bg-gray-100'}"
-							onclick={() => go('voice')}
-							onkeydown={(e) => e.key === 'Enter' && go('voice')}
+							onclick={() => go('lockvoice')}
+							onkeydown={(e) => e.key === 'Enter' && go('lockvoice')}
 						>
 							<span class="mr-3 text-xl">🎙️</span>
-							<span>語音頻道</span>
+							<span>鎖碼語音頻道</span>
 						</button>
 						<button
-							class="flex items-center p-3 rounded-lg {currentPath === 'anime'
+							class="flex items-center p-3 rounded-lg {currentPath === 'autovoice'
 								? 'bg-blue-100 text-blue-700'
 								: 'hover:bg-gray-100'}"
-							onclick={() => go('anime')}
-							onkeydown={(e) => e.key === 'Enter' && go('anime')}
+							onclick={() => go('autovoice')}
+							onkeydown={(e) => e.key === 'Enter' && go('autovoice')}
 						>
-							<span class="mr-3 text-xl">📺</span>
-							<span>動漫通知</span>
+							<span class="mr-3 text-xl">🎙️</span>
+							<span>自動語音頻道</span>
 						</button>
 						<button
 							class="flex items-center p-3 rounded-lg {currentPath === 'features'
