@@ -63,3 +63,70 @@
   },
   "r18on": false
 }
+{
+  "_id": "63dc8d628b70757feb68996f",
+  "guild_id": {
+      "low": -1375461326,
+      "high": 232400804,
+      "unsigned": false
+  },
+  "active_voicechannel": [],
+  "anime": {
+      "channel": 0,
+      "webhook": "",
+      "message": "{anime}更新了!",
+      "is_enabled": false
+  },
+  "autovoice": [
+      {
+          "low": 272765020,
+          "high": 317679820,
+          "unsigned": false
+      }
+  ],
+  "ispro": false,
+  "language": "",
+  "leave": {
+      "channel": 0,
+      "message": "{user} 離開了 {server}!"
+  },
+  "lockvoice": {},
+  "role_dropdown": {
+      "1093587831873622076": {
+          "channel_id": {
+              "low": 1170477120,
+              "high": 241714411,
+              "unsigned": false
+          },
+          "listname": "領取身分組",
+          "roles": [
+              {
+                  "label": "18",
+                  "value": "1089749889669419058",
+                  "emoji": "<:5007discordchannelnsfw:1093588047964147914>"
+              }
+          ]
+      }
+  },
+  "welcome": {
+      "channel": 0,
+      "message": "歡迎 {user} 來到 {server}!"
+  },
+  "User_Activity": false,
+  "User_Activity_cache": {},
+  "User_Activity_archive": {},
+  "Daily_wife": {},
+  "Aleardy_be_wife": [],
+  "Disable_wife_users": [],
+  "isfixtwitter": true,
+  "isfixnhentai": true,
+  "isfixpixiv": true,
+  "anti_fish": true,
+  "publish": false,
+  "tts": {
+      "channel": 0,
+      "is_enabled": false,
+      "users": []
+  },
+  "r18on": false
+}

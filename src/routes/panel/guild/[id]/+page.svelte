@@ -3,6 +3,7 @@
 	let { data } = $props()
 
 	const guild = data.guild
+  console.log(guild);
 </script>
 
 <div class="bg-white rounded-lg shadow-md p-6">
