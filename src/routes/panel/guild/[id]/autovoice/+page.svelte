@@ -12,6 +12,10 @@
 	let saveError = $state(null)
 	let showAddForm = $state(false)
 
+	let channels = $state(null)
+	let loadingChannels = $state(false)
+	let channelsError = $state(null)
+
 	// 將大整數頻道 ID 轉換為字符串
 	function formatChannelId(channel) {
 		if (!channel) return ''
@@ -27,54 +31,67 @@
 		}
 	}
 
-	// 獲取有格式的頻道列表
+	async function loadChannels() {
+		if (channels) return
+
+		loadingChannels = true
+		channelsError = null
+
+		try {
+			const guildId = formatChannelId(guild.guild_id)
+			const response = await fetch(`/api/getGuildChannels/${guildId}`)
+			if (!response.ok) {
+				throw new Error('無法載入頻道列表')
+			}
+			const data = await response.json()
+			channels = data.channels
+		} catch (error) {
+			console.error('載入頻道失敗:', error)
+			channelsError = error.message
+		} finally {
+			loadingChannels = false
+		}
+	}
+
+	loadChannels()
+
 	let formattedChannels = autovoiceChannels.map((channel) => formatChannelId(channel))
 
-	// 添加新頻道
 	function addChannel() {
 		if (!newChannelId.trim()) {
-			saveError = '請輸入頻道 ID'
+			saveError = '請選擇頻道'
 			return
 		}
 
-		// 檢查是否已存在
 		if (formattedChannels.includes(newChannelId.trim())) {
 			saveError = '此頻道已在列表中'
 			return
 		}
 
-		// 添加新頻道 (使用原始格式)
-		autovoiceChannels.push({
-			low: 0, // 這裡只是佔位，實際會在保存時被伺服器處理
-			high: 0,
-			unsigned: false
-		})
+		formattedChannels.push(newChannelId.trim())
 
-		// 保存變更
 		saveChanges()
 
-		// 重置表單
 		newChannelId = ''
 		showAddForm = false
 	}
 
-	// 刪除頻道
 	function deleteChannel(index) {
 		if (confirm('確定要刪除此自動語音頻道嗎？')) {
 			autovoiceChannels.splice(index, 1)
-			autovoiceChannels = [...autovoiceChannels] // 觸發更新
+			autovoiceChannels = [...autovoiceChannels]
 			saveChanges()
 		}
 	}
 
-	// 儲存所有變更
 	async function saveChanges() {
 		saving = true
 		saveSuccess = false
 		saveError = null
 
 		try {
-			const response = await fetch(`/api/guild/${formatChannelId(guild.guild_id)}/autovoice`, {
+			const guildId = formatChannelId(guild.guild_id)
+			const response = await fetch(`/api/guild/${guildId}/autovoice`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -90,10 +107,10 @@
 
 			const result = await response.json()
 
-			// 更新為伺服器返回的格式
 			if (result.autovoice) {
 				autovoiceChannels = result.autovoice
 				guild.autovoice = [...autovoiceChannels]
+				formattedChannels = autovoiceChannels.map((channel) => formatChannelId(channel))
 			}
 
 			saveSuccess = true
@@ -102,7 +119,7 @@
 			saveError = error.message
 		} finally {
 			saving = false
-			// 5秒後清除狀態訊息
+
 			setTimeout(() => {
 				saveSuccess = false
 				saveError = null
@@ -179,15 +196,31 @@
 
 			<div class="mb-4">
 				<label for="channelId" class="block text-sm font-medium text-gray-700 mb-1">
-					頻道 ID <span class="text-red-500">*</span>
+					語音頻道選擇 <span class="text-red-500">*</span>
 				</label>
-				<input
-					type="text"
-					id="channelId"
-					bind:value={newChannelId}
-					placeholder="請輸入語音頻道 ID"
-					class="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-				/>
+				{#if loadingChannels}
+					<div class="w-full p-2 border border-gray-300 rounded-md bg-gray-50 text-gray-500">
+						載入頻道中...
+					</div>
+				{:else if channelsError}
+					<div class="w-full p-2 border border-red-300 rounded-md bg-red-50 text-red-500">
+						{channelsError}
+					</div>
+				{:else if channels}
+					<select
+						bind:value={newChannelId}
+						class="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+					>
+						<option value="">請選擇語音頻道</option>
+						{#each channels.voice as channel}
+							<option value={channel.id}>🔊 {channel.name}</option>
+						{/each}
+					</select>
+				{:else}
+					<div class="w-full p-2 border border-gray-300 rounded-md bg-gray-50 text-gray-500">
+						無法載入頻道列表
+					</div>
+				{/if}
 				<p class="text-xs text-gray-500 mt-1">用戶加入此頻道後會自動創建個人語音頻道</p>
 			</div>
 
@@ -208,5 +241,4 @@
 			</div>
 		</div>
 	{/if}
-
 </div>

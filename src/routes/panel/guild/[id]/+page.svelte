@@ -3,7 +3,58 @@
 	let { data } = $props()
 
 	const guild = data.guild
-  console.log(guild);
+
+	let channels = $state(null)
+	let loadingChannels = $state(false)
+
+	function formatChannelId(channel) {
+		if (!channel) return ''
+		if (typeof channel === 'string') return channel
+
+		try {
+			const highPart = BigInt(channel.high) * BigInt(4294967296)
+			const lowPart = BigInt(channel.low >>> 0)
+			return String(highPart + lowPart)
+		} catch (error) {
+			console.error('轉換頻道 ID 錯誤:', error)
+			return ''
+		}
+	}
+
+	function getChannelName(channelId) {
+		if (!channels || !channelId) return channelId || '未設定'
+
+		const allChannels = [
+			...channels.text,
+			...channels.voice,
+			...channels.announcement,
+			...channels.forum
+		]
+
+		const channel = allChannels.find((ch) => ch.id === channelId)
+		return channel ? `# ${channel.name}` : channelId
+	}
+
+	async function loadChannels() {
+		if (channels || loadingChannels) return
+
+		loadingChannels = true
+		try {
+			const response = await fetch(`/api/getGuildChannels/${formatChannelId(guild.guild_id)}`)
+			if (response.ok) {
+				const data = await response.json()
+				channels = data.channels
+			}
+		} catch (error) {
+			console.error('載入頻道失敗:', error)
+		} finally {
+			loadingChannels = false
+		}
+	}
+
+	loadChannels()
+
+	console.log(guild)
 </script>
 
 <div class="bg-white rounded-lg shadow-md p-6">
@@ -117,7 +168,9 @@
 				</div>
 				<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2">
 					<div>
-						<p class="text-sm text-gray-600">頻道 ID: {guild.anime.channel || '未設定'}</p>
+						<p class="text-sm text-gray-600">
+							頻道: {getChannelName(formatChannelId(guild.anime.channel))}
+						</p>
 					</div>
 					<div>
 						<p class="text-sm text-gray-600">

@@ -16,13 +16,56 @@
 	 */
 	let saveError = $state(null)
 
+	let channels = $state(null)
+	let loadingChannels = $state(false)
+	let channelsError = $state(null)
+
+	function formatChannelId(channel) {
+		if (!channel) return ''
+		if (typeof channel === 'string') return channel
+
+		try {
+			const highPart = BigInt(channel.high) * BigInt(4294967296)
+			const lowPart = BigInt(channel.low >>> 0)
+			return String(highPart + lowPart)
+		} catch (error) {
+			console.error('轉換頻道 ID 錯誤:', error)
+			return ''
+		}
+	}
+
+	async function loadChannels() {
+		if (channels) return
+
+		loadingChannels = true
+		channelsError = null
+
+		try {
+			const guildId = formatChannelId(guild.guild_id)
+			const response = await fetch(`/api/getGuildChannels/${guildId}`)
+			if (!response.ok) {
+				throw new Error('無法載入頻道列表')
+			}
+			const data = await response.json()
+			channels = data.channels
+		} catch (error) {
+			console.error('載入頻道失敗:', error)
+			channelsError = error.message
+		} finally {
+			loadingChannels = false
+		}
+	}
+
+	loadChannels()
+
 	async function saveSettings() {
 		saving = true
 		saveSuccess = false
 		saveError = null
 
 		try {
-			const response = await fetch(`/api/guild/${guild.guild_id}/welcome`, {
+			const guildId = formatChannelId(guild.guild_id)
+			const response = await fetch(`/api/guild/${guildId}/welcome`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -101,17 +144,36 @@
 		<div class="grid grid-cols-1 gap-4 mb-6 {!welcomeEnabled ? 'opacity-50' : ''}">
 			<div>
 				<label for="welcomeChannel" class="block text-sm font-medium text-gray-700 mb-1"
-					>頻道 ID</label
+					>頻道選擇</label
 				>
-				<input
-					type="text"
-					id="welcomeChannel"
-					bind:value={welcome.channel}
-					placeholder="請輸入頻道 ID"
-					disabled={!welcomeEnabled}
-					class="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-				/>
-				<p class="text-xs text-gray-500 mt-1">頻道 ID 可以在 Discord 頻道設定中找到</p>
+				{#if loadingChannels}
+					<div class="w-full p-2 border border-gray-300 rounded-md bg-gray-50 text-gray-500">
+						載入頻道中...
+					</div>
+				{:else if channelsError}
+					<div class="w-full p-2 border border-red-300 rounded-md bg-red-50 text-red-500">
+						{channelsError}
+					</div>
+				{:else if channels}
+					<select
+						bind:value={welcome.channel}
+						disabled={!welcomeEnabled}
+						class="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+					>
+						<option value="">請選擇頻道</option>
+						{#each channels.text as channel}
+							<option value={channel.id}># {channel.name}</option>
+						{/each}
+						{#each channels.announcement as channel}
+							<option value={channel.id}># {channel.name} (公告)</option>
+						{/each}
+					</select>
+				{:else}
+					<div class="w-full p-2 border border-gray-300 rounded-md bg-gray-50 text-gray-500">
+						無法載入頻道列表
+					</div>
+				{/if}
+				<p class="text-xs text-gray-500 mt-1">選擇歡迎訊息要發送的頻道</p>
 			</div>
 
 			<div>
@@ -156,17 +218,36 @@
 		<div class="grid grid-cols-1 gap-4 mb-6 {!leaveEnabled ? 'opacity-50' : ''}">
 			<div>
 				<label for="leaveChannel" class="block text-sm font-medium text-gray-700 mb-1"
-					>頻道 ID</label
+					>頻道選擇</label
 				>
-				<input
-					type="text"
-					id="leaveChannel"
-					bind:value={leave.channel}
-					placeholder="請輸入頻道 ID"
-					disabled={!leaveEnabled}
-					class="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-				/>
-				<p class="text-xs text-gray-500 mt-1">頻道 ID 可以在 Discord 頻道設定中找到</p>
+				{#if loadingChannels}
+					<div class="w-full p-2 border border-gray-300 rounded-md bg-gray-50 text-gray-500">
+						載入頻道中...
+					</div>
+				{:else if channelsError}
+					<div class="w-full p-2 border border-red-300 rounded-md bg-red-50 text-red-500">
+						{channelsError}
+					</div>
+				{:else if channels}
+					<select
+						bind:value={leave.channel}
+						disabled={!leaveEnabled}
+						class="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+					>
+						<option value="">請選擇頻道</option>
+						{#each channels.text as channel}
+							<option value={channel.id}># {channel.name}</option>
+						{/each}
+						{#each channels.announcement as channel}
+							<option value={channel.id}># {channel.name} (公告)</option>
+						{/each}
+					</select>
+				{:else}
+					<div class="w-full p-2 border border-gray-300 rounded-md bg-gray-50 text-gray-500">
+						無法載入頻道列表
+					</div>
+				{/if}
+				<p class="text-xs text-gray-500 mt-1">選擇離開訊息要發送的頻道</p>
 			</div>
 
 			<div>

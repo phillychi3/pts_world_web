@@ -5,20 +5,21 @@
 	let guild = data.guild
 	let lockvoice = guild.lockvoice || {}
 
-	// 用於暫存編輯中的鎖碼語音頻道
 	let editingChannel = $state(null)
 	let newChannelId = $state('')
 	let newPassword = $state('')
 	let newAlarmChannel = $state('')
 	let newTargetChannel = $state('')
 
-	// 頁面狀態
 	let isAdding = $state(false)
 	let saving = $state(false)
 	let saveSuccess = $state(false)
 	let saveError = $state(null)
 
-	// 將大整數頻道 ID 轉換為字符串
+	let channels = $state(null)
+	let loadingChannels = $state(false)
+	let channelsError = $state(null)
+
 	/**
 	 * @param {{ high: string | number | bigint | boolean; low: number; }} channel
 	 */
@@ -36,15 +37,37 @@
 		}
 	}
 
-	// 獲取鎖碼語音頻道列表
-	let channels = Object.keys(lockvoice).map((id) => ({
+	async function loadChannels() {
+		if (channels) return
+
+		loadingChannels = true
+		channelsError = null
+
+		try {
+			const guildId = formatChannelId(guild.guild_id)
+			const response = await fetch(`/api/getGuildChannels/${guildId}`)
+			if (!response.ok) {
+				throw new Error('無法載入頻道列表')
+			}
+			const data = await response.json()
+			channels = data.channels
+		} catch (error) {
+			console.error('載入頻道失敗:', error)
+			channelsError = error.message
+		} finally {
+			loadingChannels = false
+		}
+	}
+
+	loadChannels()
+
+	let channelList = Object.keys(lockvoice).map((id) => ({
 		id,
 		password: lockvoice[id].password,
 		alarmChannel: formatChannelId(lockvoice[id].alarmchannel),
 		targetChannel: formatChannelId(lockvoice[id].targetchannel)
 	}))
 
-	// 開始編輯頻道
 	function editChannel(channel) {
 		editingChannel = channel.id
 		newPassword = channel.password
@@ -53,7 +76,6 @@
 		isAdding = false
 	}
 
-	// 開始添加新頻道
 	function startAddChannel() {
 		editingChannel = null
 		newChannelId = ''
@@ -63,13 +85,11 @@
 		isAdding = true
 	}
 
-	// 取消編輯或添加
 	function cancelEdit() {
 		editingChannel = null
 		isAdding = false
 	}
 
-	// 刪除頻道
 	function deleteChannel(channelId) {
 		if (confirm('確定要刪除此鎖碼語音頻道設定嗎？')) {
 			delete lockvoice[channelId]
@@ -77,7 +97,6 @@
 		}
 	}
 
-	// 保存編輯或新增
 	function saveChannel() {
 		const channelId = editingChannel || newChannelId
 
@@ -91,29 +110,26 @@
 			return
 		}
 
-		// 更新或添加頻道設定
 		lockvoice[channelId] = {
 			password: newPassword,
 			alarmchannel: newAlarmChannel,
 			targetchannel: newTargetChannel
 		}
 
-		// 儲存變更
 		saveChanges()
 
-		// 重置表單
 		editingChannel = null
 		isAdding = false
 	}
 
-	// 儲存所有變更
 	async function saveChanges() {
 		saving = true
 		saveSuccess = false
 		saveError = null
 
 		try {
-			const response = await fetch(`/api/guild/${formatChannelId(guild.guild_id)}/lockvoice`, {
+			const guildId = formatChannelId(guild.guild_id)
+			const response = await fetch(`/api/guild/${guildId}/lockvoice`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
@@ -173,7 +189,7 @@
 			</button>
 		</div>
 
-		{#if channels.length === 0}
+		{#if channelList.length === 0}
 			<p class="text-gray-500 italic">尚未設定任何鎖碼語音頻道</p>
 		{:else}
 			<div class="overflow-x-auto">
@@ -188,7 +204,7 @@
 						</tr>
 					</thead>
 					<tbody>
-						{#each channels as channel}
+						{#each channelList as channel}
 							<tr class="border-b">
 								<td class="py-2 px-4">{channel.id}</td>
 								<td class="py-2 px-4">{channel.password}</td>
@@ -224,16 +240,32 @@
 			{#if isAdding}
 				<div class="mb-4">
 					<label for="channelId" class="block text-sm font-medium text-gray-700 mb-1">
-						頻道 ID <span class="text-red-500">*</span>
+						語音頻道選擇 <span class="text-red-500">*</span>
 					</label>
-					<input
-						type="text"
-						id="channelId"
-						bind:value={newChannelId}
-						placeholder="請輸入語音頻道 ID"
-						class="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-					/>
-					<p class="text-xs text-gray-500 mt-1">需要加密的語音頻道 ID</p>
+					{#if loadingChannels}
+						<div class="w-full p-2 border border-gray-300 rounded-md bg-gray-50 text-gray-500">
+							載入頻道中...
+						</div>
+					{:else if channelsError}
+						<div class="w-full p-2 border border-red-300 rounded-md bg-red-50 text-red-500">
+							{channelsError}
+						</div>
+					{:else if channels}
+						<select
+							bind:value={newChannelId}
+							class="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+						>
+							<option value="">請選擇語音頻道</option>
+							{#each channels.voice as channel}
+								<option value={channel.id}>🔊 {channel.name}</option>
+							{/each}
+						</select>
+					{:else}
+						<div class="w-full p-2 border border-gray-300 rounded-md bg-gray-50 text-gray-500">
+							無法載入頻道列表
+						</div>
+					{/if}
+					<p class="text-xs text-gray-500 mt-1">需要加密的語音頻道</p>
 				</div>
 			{/if}
 
@@ -255,13 +287,24 @@
 				<label for="alarmChannel" class="block text-sm font-medium text-gray-700 mb-1">
 					通知頻道
 				</label>
-				<input
-					type="text"
-					id="alarmChannel"
-					bind:value={newAlarmChannel}
-					placeholder="請輸入告警頻道 ID (選填)"
-					class="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-				/>
+				{#if channels}
+					<select
+						bind:value={newAlarmChannel}
+						class="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+					>
+						<option value="">請選擇通知頻道 (選填)</option>
+						{#each channels.text as channel}
+							<option value={channel.id}># {channel.name}</option>
+						{/each}
+						{#each channels.announcement as channel}
+							<option value={channel.id}># {channel.name} (公告)</option>
+						{/each}
+					</select>
+				{:else}
+					<div class="w-full p-2 border border-gray-300 rounded-md bg-gray-50 text-gray-500">
+						載入頻道中...
+					</div>
+				{/if}
 				<p class="text-xs text-gray-500 mt-1">嘗試進入失敗時發送通知的頻道</p>
 			</div>
 
@@ -269,13 +312,21 @@
 				<label for="targetChannel" class="block text-sm font-medium text-gray-700 mb-1">
 					目標頻道
 				</label>
-				<input
-					type="text"
-					id="targetChannel"
-					bind:value={newTargetChannel}
-					placeholder="請輸入目標頻道 ID (選填)"
-					class="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
-				/>
+				{#if channels}
+					<select
+						bind:value={newTargetChannel}
+						class="w-full p-2 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+					>
+						<option value="">請選擇目標語音頻道 (選填)</option>
+						{#each channels.voice as channel}
+							<option value={channel.id}>🔊 {channel.name}</option>
+						{/each}
+					</select>
+				{:else}
+					<div class="w-full p-2 border border-gray-300 rounded-md bg-gray-50 text-gray-500">
+						載入頻道中...
+					</div>
+				{/if}
 				<p class="text-xs text-gray-500 mt-1">成功驗證後移動用戶到的頻道</p>
 			</div>
 
@@ -299,9 +350,6 @@
 
 	<div class="mt-8 border-t border-gray-200 pt-4">
 		<h3 class="text-lg font-medium mb-2">關於鎖碼語音頻道</h3>
-		<p class="text-gray-600">
-			鎖碼語音頻道功能允許您設定需要密碼才能進入的語音頻道。
-		</p>
-
+		<p class="text-gray-600">鎖碼語音頻道功能允許您設定需要密碼才能進入的語音頻道。</p>
 	</div>
 </div>
