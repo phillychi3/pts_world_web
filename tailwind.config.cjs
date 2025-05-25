@@ -2,6 +2,7 @@ import { join } from 'path'
 
 // 1. Import the Skeleton plugin
 import { skeleton } from '@skeletonlabs/tw-plugin'
+import { myCustomTheme } from './src/theme.ts'
 
 /** @type {import('tailwindcss').Config}*/
 const config = {
@@ -18,7 +19,9 @@ const config = {
 	plugins: [
 		// 4. Append the Skeleton plugin (after other plugins)
 		skeleton({
-			themes: { preset: ['modern'] }
+			themes: {
+				custom: [myCustomTheme]
+			}
 		})
 	]
 }
