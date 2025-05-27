@@ -24,7 +24,6 @@ export async function GET({ params, cookies }) {
 			})
 		}
 
-		// 首先驗證用戶是否有權限訪問此伺服器
 		const userGuildsResponse = await fetch('https://discord.com/api/v10/users/@me/guilds', {
 			headers: {
 				Authorization: `Bearer ${accessToken}`,

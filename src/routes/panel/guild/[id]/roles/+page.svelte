@@ -230,7 +230,7 @@
 
 		try {
 			const guildId = formatChannelId(guild.guild_id)
-			const response = await fetch(`/api/guild/${guildId}/role-dropdown`, {
+			const response = await fetch(`/api/nothing/guild/${guildId}/role-dropdown`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'

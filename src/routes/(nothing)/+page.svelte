@@ -10,26 +10,24 @@
 	<title>Nothing bot</title>
 </svelte:head>
 
-<div class="min-h-screen bg-gradient-to-br from-gray-900 to-black">
-	<div class="mx-auto px-4 py-32 text-center">
-		<h1
-			class="text-4xl md:text-6xl lg:text-[100px] text-white mb-10 break-words font-bold tracking-tight"
-		>
+<div class="min-h-screen flex items-center justify-center">
+	<div class="mx-auto px-4 text-center">
+		<h1 class="text-6xl md:text-8xl lg:text-[120px] mb-12 break-words font-bold tracking-tight">
 			Nothing Bot
 		</h1>
-		<p class="mb-12 text-3xl md:text-4xl text-gray-300 font-light">您的多功能 Discord 機器人助手</p>
-		<div class="flex justify-center gap-4">
+		<p class="mb-16 text-4xl md:text-5xl lg:text-6xl font-light">您的多功能 Discord 機器人助手</p>
+		<div class="flex flex-col sm:flex-row justify-center gap-6">
 			<a
 				href="https://discord.com/oauth2/authorize?client_id=1044529058689593435&permissions=1641549393014&scope=bot%20applications.commands"
 				target="_blank"
-				class="px-8 py-4 bg-white text-black font-semibold rounded-lg hover:bg-gray-100 transition-all duration-300 transform hover:scale-105 shadow-lg"
+				class="px-10 py-5 text-lg md:text-xl bg-white font-semibold rounded-lg hover:bg-gray-100 hover:text-black transition-all duration-300 transform hover:scale-105 shadow-lg dark:text-black"
 			>
 				邀請機器人
 			</a>
 			<a
 				href="https://discord.gg/m6qKNZTaeR"
 				target="_blank"
-				class="px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105"
+				class="px-10 py-5 text-lg md:text-xl bg-transparent border-2 border-white font-semibold rounded-lg hover:bg-white hover:text-black transition-all duration-300 transform hover:scale-105"
 			>
 				加入支援伺服器
 			</a>

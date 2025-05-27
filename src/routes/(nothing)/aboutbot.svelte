@@ -333,11 +333,19 @@
 	}
 
 	.e-text {
-		color: #c42e2e;
+		color: rgb(var(--color-primary-500));
 	}
 
 	.u-text {
-		color: #00000000;
-		-webkit-text-stroke: 1px #2d2dc2;
+		color: transparent;
+		-webkit-text-stroke: 1px rgb(var(--color-secondary-600));
+	}
+
+	:global(.dark) .e-text {
+		color: rgb(var(--color-primary-500));
+	}
+
+	:global(.dark) .u-text {
+		-webkit-text-stroke: 1px rgb(var(--color-secondary-300));
 	}
 </style>

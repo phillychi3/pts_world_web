@@ -129,7 +129,7 @@
 
 		try {
 			const guildId = formatChannelId(guild.guild_id)
-			const response = await fetch(`/api/guild/${guildId}/lockvoice`, {
+			const response = await fetch(`/api/nothing/guild/${guildId}/lockvoice`, {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
