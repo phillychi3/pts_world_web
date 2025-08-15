@@ -36,6 +36,16 @@ export async function load({ locals, params, fetch }) {
 				}
 				const errorText = await response.text()
 				console.error('API error:', errorText)
+				if (JSON.parse(errorText).error === 'Guild not found') {
+					return {
+						guild: null,
+						error: 'Guild not found'
+					}
+				}
+				return {
+					guild: null,
+					error: 'Failed to fetch guild data'
+				}
 			}
 			const guildData = await response.json()
 			return {

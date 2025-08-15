@@ -17,186 +17,90 @@
 	}
 </script>
 
-<div class="container">
-	<h1>Discord 伺服器清單</h1>
+<div class="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100">
+	<div class="container mx-auto px-4 py-8">
+		<h1 class="text-4xl md:text-5xl font-bold text-center mb-12 text-gray-900 tracking-tight">
+			Discord 伺服器清單
+		</h1>
 
-	{#if data.error}
-		<div class="error-message">
-			<p>{data.error}</p>
-		</div>
-	{/if}
+		{#if data.error}
+			<div
+				class="bg-red-50 border border-red-200 text-red-800 px-6 py-4 rounded-xl mb-8 max-w-2xl mx-auto shadow-sm"
+			>
+				<p class="font-medium">{data.error}</p>
+			</div>
+		{/if}
 
-	{#if hasGuilds}
-		<div class="guilds-grid">
-			{#each discordGuilds as guild}
-				{#if guild.isAdmin || guild.owner}
-					<div class="guild-card">
-						<div class="guild-header">
-							{#if guild.icon}
-								<img src={guild.icon} alt="{guild.name} icon" class="guild-icon" />
-							{:else}
-								<div class="guild-icon-placeholder">
-									{guild.name.substring(0, 2)}
-								</div>
-							{/if}
-							<h3 class="guild-name">{guild.name}</h3>
+		{#if hasGuilds}
+			<div
+				class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto"
+			>
+				{#each discordGuilds as guild}
+					{#if guild.isAdmin || guild.owner}
+						<div
+							class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
+						>
+							<div class="flex items-center mb-4">
+								{#if guild.icon}
+									<img
+										src={guild.icon}
+										alt="{guild.name} icon"
+										class="w-12 h-12 rounded-full mr-3 object-cover ring-2 ring-gray-200"
+									/>
+								{:else}
+									<div
+										class="w-12 h-12 rounded-full mr-3 bg-indigo-500 text-white flex items-center justify-center font-bold text-lg ring-2 ring-gray-200"
+									>
+										{guild.name.substring(0, 2).toUpperCase()}
+									</div>
+								{/if}
+								<h3 class="text-lg font-semibold text-gray-900 truncate flex-1">{guild.name}</h3>
+							</div>
+							<div class="flex flex-wrap gap-2 mb-6">
+								{#if guild.owner}
+									<span
+										class="px-3 py-1 bg-yellow-100 text-yellow-800 text-sm font-medium rounded-full border border-yellow-200"
+									>
+										伺服器擁有者
+									</span>
+								{/if}
+								{#if guild.isAdmin}
+									<span
+										class="px-3 py-1 bg-indigo-100 text-indigo-800 text-sm font-medium rounded-full border border-indigo-200"
+									>
+										管理員
+									</span>
+								{/if}
+							</div>
+							<div class="flex justify-end">
+								<button
+									class="px-6 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors duration-200 shadow-sm hover:shadow-md"
+									onclick={() => gotoguild(guild)}
+								>
+									查看詳情
+								</button>
+							</div>
 						</div>
-						<div class="guild-meta">
-							{#if guild.owner}
-								<span class="badge owner-badge">伺服器擁有者</span>
-							{/if}
-							{#if guild.isAdmin}
-								<span class="badge admin-badge">管理員</span>
-							{/if}
-						</div>
-						<div class="guild-actions">
-							<button class="view-button" onclick={() => gotoguild(guild)}>查看詳情</button>
-						</div>
-					</div>
-				{/if}
-			{/each}
-		</div>
-	{:else}
-		<div class="no-guilds">
-			<p>尚未加入任何 Discord 伺服器，或尚未授權存取伺服器資訊。</p>
-			{#if !data.user?.discord?.authenticated}
-				<a href="/api/auth/discord" class="login-button">使用 Discord 登入</a>
-			{/if}
-		</div>
-	{/if}
+					{/if}
+				{/each}
+			</div>
+		{:else}
+			<div class="text-center py-16 max-w-2xl mx-auto">
+				<div class="bg-white p-8 rounded-xl shadow-lg border border-gray-100">
+					<div class="text-6xl mb-6">🤖</div>
+					<p class="text-xl text-gray-600 mb-6 leading-relaxed">
+						尚未加入任何 Discord 伺服器，或尚未授權存取伺服器資訊。
+					</p>
+					{#if !data.user?.discord?.authenticated}
+						<a
+							href="/api/auth/discord"
+							class="inline-block px-8 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg"
+						>
+							使用 Discord 登入
+						</a>
+					{/if}
+				</div>
+			</div>
+		{/if}
+	</div>
 </div>
-
-<style>
-	.container {
-		padding: 1rem;
-	}
-
-	h1 {
-		margin-bottom: 1.5rem;
-		font-size: 1.8rem;
-	}
-
-	.guilds-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-		gap: 1rem;
-	}
-
-	.guild-card {
-		background-color: #f5f5f5;
-		border-radius: 8px;
-		padding: 1rem;
-		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-		transition:
-			transform 0.2s,
-			box-shadow 0.2s;
-	}
-
-	.guild-card:hover {
-		transform: translateY(-2px);
-		box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-	}
-
-	.guild-header {
-		display: flex;
-		align-items: center;
-		margin-bottom: 0.5rem;
-	}
-
-	.guild-icon {
-		width: 40px;
-		height: 40px;
-		border-radius: 50%;
-		margin-right: 0.75rem;
-		object-fit: cover;
-	}
-
-	.guild-icon-placeholder {
-		width: 40px;
-		height: 40px;
-		border-radius: 50%;
-		margin-right: 0.75rem;
-		background-color: #5865f2;
-		color: white;
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		font-weight: bold;
-	}
-
-	.guild-name {
-		font-size: 1rem;
-		margin: 0;
-		font-weight: 600;
-	}
-
-	.guild-meta {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.5rem;
-		margin-bottom: 1rem;
-	}
-
-	.badge {
-		padding: 0.2rem 0.5rem;
-		border-radius: 4px;
-		font-size: 0.75rem;
-		font-weight: 500;
-	}
-
-	.owner-badge {
-		background-color: #ffd700;
-		color: #333;
-	}
-
-	.admin-badge {
-		background-color: #5865f2;
-		color: white;
-	}
-
-	.guild-actions {
-		display: flex;
-		justify-content: flex-end;
-	}
-
-	.view-button {
-		background-color: #5865f2;
-		color: white;
-		border: none;
-		padding: 0.5rem 1rem;
-		border-radius: 4px;
-		cursor: pointer;
-		font-weight: 500;
-		transition: background-color 0.2s;
-	}
-
-	.view-button:hover {
-		background-color: #4752c4;
-	}
-
-	.no-guilds {
-		text-align: center;
-		padding: 2rem;
-		background-color: #f5f5f5;
-		border-radius: 8px;
-	}
-
-	.login-button {
-		display: inline-block;
-		margin-top: 1rem;
-		background-color: #5865f2;
-		color: white;
-		text-decoration: none;
-		padding: 0.5rem 1rem;
-		border-radius: 4px;
-		font-weight: 500;
-	}
-
-	.error-message {
-		background-color: #ffebee;
-		color: #c62828;
-		padding: 1rem;
-		border-radius: 4px;
-		margin-bottom: 1rem;
-	}
-</style>

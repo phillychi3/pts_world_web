@@ -64,9 +64,22 @@
 	</header>
 
 	{#if data.error}
-		<div class="bg-red-100 text-red-700 p-4 rounded-lg mb-4">
-			<p>{data.error}</p>
-		</div>
+		{#if data.error === 'Guild not found'}
+			<div class="bg-red-100 text-red-700 p-4 rounded-lg mb-4">
+				<p class="mb-2">機器人尚未加入伺服器</p>
+				<a
+					href="https://discord.com/oauth2/authorize?client_id=1044529058689593435&permissions=1641549393014&scope=bot%20applications.commands"
+					target="_blank"
+					class="rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-semibold text-gray-700 shadow-sm hover:bg-gray-100"
+				>
+					邀請機器人
+				</a>
+			</div>
+		{:else}
+			<div class="bg-red-100 text-red-700 p-4 rounded-lg mb-4">
+				<p>{data.error}</p>
+			</div>
+		{/if}
 	{:else}
 		<div class="mb-8">
 			<h2 class="text-xl font-semibold mb-4 pb-2 border-b border-gray-200">基本設定</h2>
