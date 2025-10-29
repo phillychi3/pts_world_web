@@ -32,7 +32,7 @@
 		]
 
 		const channel = allChannels.find((ch) => ch.id === channelId)
-		return channel ? `# ${channel.name}` : channelId
+		return channel ? channel.name : channelId
 	}
 
 	async function loadChannels() {
@@ -131,15 +131,192 @@
 						</div>
 						<div class="flex items-center">
 							<span
-								class="mr-2 w-3 h-3 rounded-full {guild.anti_fish ? 'bg-green-500' : 'bg-gray-300'}"
+								class="mr-2 w-3 h-3 rounded-full {guild.isfixex ? 'bg-green-500' : 'bg-gray-300'}"
 							></span>
-							<span>防釣魚連結</span>
+							<span>E(x)hentai 連結</span>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
+		<div class="mb-8">
+			<h2 class="text-xl font-semibold mb-4 pb-2 border-b border-gray-200">安全設定</h2>
+			<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+				<div class="bg-gray-50 p-4 rounded-lg">
+					<h3 class="font-medium text-gray-700">蜜罐</h3>
+					<div class="flex items-center">
+						<span
+							class="mr-2 w-3 h-3 rounded-full {guild.xaoc2.honeypot.enabled
+								? 'bg-green-500'
+								: 'bg-gray-300'}"
+						></span>
+						<span>是否啟用</span>
+						<span class="ml-4 text-sm text-gray-500"
+							>頻道 ID: {formatChannelId(guild.xaoc2.honeypot.channel_id) || '未設定'}</span
+						>
+					</div>
+				</div>
+				<div class="bg-gray-50 p-4 rounded-lg">
+					<h3 class="font-medium text-gray-700">隔離區</h3>
+					<div class="flex items-center">
+						<span
+							class="mr-2 w-3 h-3 rounded-full {guild.xaoc2.quarantine.enabled
+								? 'bg-green-500'
+								: 'bg-gray-300'}"
+						></span>
+						<span>是否啟用</span>
+					</div>
+				</div>
+				<div class="bg-gray-50 p-4 rounded-lg">
+					<h3 class="font-medium text-gray-700">user install spam</h3>
+					<div class="flex items-center">
+						<span
+							class="mr-2 w-3 h-3 rounded-full {guild.xaoc2.userinstallspam.enabled
+								? 'bg-green-500'
+								: 'bg-gray-300'}"
+						></span>
+						<span>是否啟用</span>
+					</div>
+				</div>
+				<div class="bg-gray-50 p-4 rounded-lg">
+					<h3 class="font-medium text-gray-700">4fish</h3>
+					<div class="flex items-center">
+						<span
+							class="mr-2 w-3 h-3 rounded-full {guild.xaoc2['4fish'].enabled
+								? 'bg-green-500'
+								: 'bg-gray-300'}"
+						></span>
+						<span>是否啟用</span>
+					</div>
+				</div>
+				<div class="bg-gray-50 p-4 rounded-lg">
+					<h3 class="font-medium text-gray-700">垃圾訊息檢測</h3>
+					<div class="flex items-center">
+						<span
+							class="mr-2 w-3 h-3 rounded-full {guild.xaoc2.spam_detection.enabled
+								? 'bg-green-500'
+								: 'bg-gray-300'}"
+						></span>
+						<span>是否啟用</span>
+					</div>
+				</div>
+				<div class="bg-gray-50 p-4 rounded-lg">
+					<h3 class="font-medium text-gray-700">釣魚檢測</h3>
+					<div class="flex items-center">
+						<span
+							class="mr-2 w-3 h-3 rounded-full {guild.anti_fish ? 'bg-green-500' : 'bg-gray-300'}"
+						></span>
+						<span>是否啟用</span>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="mb-8">
+			<h2 class="text-xl font-semibold mb-4 pb-2 border-b border-gray-200">紀錄設定</h2>
+			<div class="bg-gray-50 p-4 rounded-lg">
+				<div class="mb-4">
+					<h3 class="font-medium text-gray-700 mb-2 flex items-center">
+						<svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+							<path
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								stroke-width="2"
+								d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"
+							></path>
+						</svg>
+						紀錄頻道
+					</h3>
+					<p class="text-sm text-gray-600 bg-white px-3 py-2 rounded border border-gray-200">
+						{getChannelName(formatChannelId(guild.log_config.channel_id))} {formatChannelId(guild.log_config.channel_id)}
+					</p>
+				</div>
+
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+					<div class="flex items-center bg-white px-3 py-2 rounded border border-gray-200">
+						<span
+							class="mr-3 w-3 h-3 rounded-full {guild.log_config.member_join_leave
+								? 'bg-green-500'
+								: 'bg-gray-300'}"
+						></span>
+						<span class="text-sm text-gray-700">會員加入/離開</span>
+					</div>
+
+					<div class="flex items-center bg-white px-3 py-2 rounded border border-gray-200">
+						<span
+							class="mr-3 w-3 h-3 rounded-full {guild.log_config.message_delete
+								? 'bg-green-500'
+								: 'bg-gray-300'}"
+						></span>
+						<span class="text-sm text-gray-700">訊息刪除</span>
+					</div>
+
+					<div class="flex items-center bg-white px-3 py-2 rounded border border-gray-200">
+						<span
+							class="mr-3 w-3 h-3 rounded-full {guild.log_config.message_edit
+								? 'bg-green-500'
+								: 'bg-gray-300'}"
+						></span>
+						<span class="text-sm text-gray-700">訊息編輯</span>
+					</div>
+
+					<div class="flex items-center bg-white px-3 py-2 rounded border border-gray-200">
+						<span
+							class="mr-3 w-3 h-3 rounded-full {guild.log_config.voice_join_leave
+								? 'bg-green-500'
+								: 'bg-gray-300'}"
+						></span>
+						<span class="text-sm text-gray-700">語音頻道加入/離開</span>
+					</div>
+
+					<div class="flex items-center bg-white px-3 py-2 rounded border border-gray-200">
+						<span
+							class="mr-3 w-3 h-3 rounded-full {guild.log_config.voice_stream
+								? 'bg-green-500'
+								: 'bg-gray-300'}"
+						></span>
+						<span class="text-sm text-gray-700">語音直播紀錄</span>
+					</div>
+
+					<div class="flex items-center bg-white px-3 py-2 rounded border border-gray-200">
+						<span
+							class="mr-3 w-3 h-3 rounded-full {guild.log_config.voice_event
+								? 'bg-green-500'
+								: 'bg-gray-300'}"
+						></span>
+						<span class="text-sm text-gray-700">語音事件</span>
+					</div>
+
+					<div class="flex items-center bg-white px-3 py-2 rounded border border-gray-200">
+						<span
+							class="mr-3 w-3 h-3 rounded-full {guild.log_config.role_update
+								? 'bg-green-500'
+								: 'bg-gray-300'}"
+						></span>
+						<span class="text-sm text-gray-700">身分組更新</span>
+					</div>
+
+					<div class="flex items-center bg-white px-3 py-2 rounded border border-gray-200">
+						<span
+							class="mr-3 w-3 h-3 rounded-full {guild.log_config.channel_update
+								? 'bg-green-500'
+								: 'bg-gray-300'}"
+						></span>
+						<span class="text-sm text-gray-700">頻道更新</span>
+					</div>
+
+					<div class="flex items-center bg-white px-3 py-2 rounded border border-gray-200">
+						<span
+							class="mr-3 w-3 h-3 rounded-full {guild.log_config.guild_update
+								? 'bg-green-500'
+								: 'bg-gray-300'}"
+						></span>
+						<span class="text-sm text-gray-700">伺服器更新</span>
+					</div>
+				</div>
+			</div>
+		</div>
 		<div class="mb-8">
 			<h2 class="text-xl font-semibold mb-4 pb-2 border-b border-gray-200">訊息設定</h2>
 			<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -202,7 +379,7 @@
 						<div class="bg-gray-50 p-4 rounded-lg">
 							<h3 class="font-medium text-gray-700">{dropdown.listname}</h3>
 							<p class="text-sm text-gray-600">
-								頻道 ID: {dropdown.channel_id.high}{dropdown.channel_id.low}
+								頻道 ID: {formatChannelId(dropdown.channel_id)}
 							</p>
 							<div class="mt-2">
 								<p class="text-sm font-medium">身分組列表 ({dropdown.roles.length})</p>
