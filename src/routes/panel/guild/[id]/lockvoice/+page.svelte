@@ -159,10 +159,10 @@
 	}
 </script>
 
-<div class="bg-white rounded-lg shadow-md p-6">
+<div>
 	<header class="mb-6">
 		<h1 class="text-2xl font-bold text-gray-800">鎖碼語音頻道管理</h1>
-		<p class="text-gray-600">管理需要密碼才能進入的語音頻道</p>
+		<p class="text-gray-600 dark:text-gray-300 mt-2">管理需要密碼才能進入的語音頻道</p>
 	</header>
 
 	{#if saveSuccess}
@@ -350,6 +350,6 @@
 
 	<div class="mt-8 border-t border-gray-200 pt-4">
 		<h3 class="text-lg font-medium mb-2">關於鎖碼語音頻道</h3>
-		<p class="text-gray-600">鎖碼語音頻道功能允許您設定需要密碼才能進入的語音頻道。</p>
+		<p class="text-gray-600 dark:text-gray-300">鎖碼語音頻道功能允許您設定需要密碼才能進入的語音頻道。</p>
 	</div>
 </div>

@@ -128,10 +128,10 @@
 	}
 </script>
 
-<div class="bg-white rounded-lg shadow-md p-6">
+<div>
 	<header class="mb-6">
 		<h1 class="text-2xl font-bold text-gray-800">自動語音頻道管理</h1>
-		<p class="text-gray-600">設定當用戶加入這些頻道時，自動為其創建語音頻道</p>
+		<p class="text-gray-600 dark:text-gray-300 mt-2">設定當用戶加入這些頻道時，自動為其創建語音頻道</p>
 	</header>
 
 	{#if saveSuccess}

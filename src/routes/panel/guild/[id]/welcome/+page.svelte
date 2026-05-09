@@ -109,7 +109,7 @@
 	}
 </script>
 
-<div class="bg-white dark:bg-gray-900 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 p-8">
+<div>
 	<header class="mb-8">
 		<h1 class="text-3xl font-bold text-gray-900 dark:text-white">歡迎與離開訊息設定</h1>
 		<p class="text-gray-600 dark:text-gray-300 mt-2">設定用戶加入或離開伺服器時的自動訊息</p>
@@ -134,7 +134,11 @@
 	{/if}
 
 	<div class="mb-10">
-		<h2 class="text-2xl font-semibold mb-6 pb-3 border-b border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white">歡迎訊息設定</h2>
+		<h2
+			class="text-2xl font-semibold mb-6 pb-3 border-b border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white"
+		>
+			歡迎訊息設定
+		</h2>
 
 		<div class="mb-6">
 			<label class="inline-flex items-center cursor-pointer">
@@ -147,13 +151,20 @@
 			</label>
 		</div>
 
-		<div class="grid grid-cols-1 gap-6 mb-8 transition-opacity duration-200 {!welcomeEnabled ? 'opacity-50' : ''}">
+		<div
+			class="grid grid-cols-1 gap-6 mb-8 transition-opacity duration-200 {!welcomeEnabled
+				? 'opacity-50'
+				: ''}"
+		>
 			<div>
-				<label for="welcomeChannel" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
-					>頻道選擇</label
+				<label
+					for="welcomeChannel"
+					class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">頻道選擇</label
 				>
 				{#if loadingChannels}
-					<div class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-800 text-gray-500 dark:text-gray-400">
+					<div
+						class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-800 text-gray-500 dark:text-gray-400"
+					>
 						<i class="fas fa-spinner fa-spin mr-2"></i>載入頻道中...
 					</div>
 				{:else if channelsError}
@@ -183,8 +194,9 @@
 			</div>
 
 			<div>
-				<label for="welcomeMessage" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
-					>歡迎訊息</label
+				<label
+					for="welcomeMessage"
+					class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">歡迎訊息</label
 				>
 				<textarea
 					id="welcomeMessage"
@@ -194,13 +206,23 @@
 					rows="4"
 					class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-all duration-200"
 				></textarea>
-				<div class="text-xs text-gray-500 dark:text-gray-400 mt-2 bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+				<div
+					class="text-xs text-gray-500 dark:text-gray-400 mt-2 bg-gray-50 dark:bg-gray-800 p-3 rounded-lg"
+				>
 					<p class="font-medium mb-2">可用的變數：</p>
 					<ul class="list-disc list-inside ml-2 space-y-1">
-						<li><code class="bg-gray-200 dark:bg-gray-700 px-1 rounded">{'{user}'}</code> - 顯示用戶名稱</li>
-						<li><code class="bg-gray-200 dark:bg-gray-700 px-1 rounded">{'{server}'}</code> - 顯示伺服器名稱</li>
-						<li><code class="bg-gray-200 dark:bg-gray-700 px-1 rounded">{'{mention}'}</code> - @提及用戶</li>
-						<li><code class="bg-gray-200 dark:bg-gray-700 px-1 rounded">{'{count}'}</code> - 伺服器總人數</li>
+						<li>
+							<code class="bg-gray-200 dark:bg-gray-700 px-1 rounded">{'{user}'}</code> - 顯示用戶名稱
+						</li>
+						<li>
+							<code class="bg-gray-200 dark:bg-gray-700 px-1 rounded">{'{server}'}</code> - 顯示伺服器名稱
+						</li>
+						<li>
+							<code class="bg-gray-200 dark:bg-gray-700 px-1 rounded">{'{mention}'}</code> - @提及用戶
+						</li>
+						<li>
+							<code class="bg-gray-200 dark:bg-gray-700 px-1 rounded">{'{count}'}</code> - 伺服器總人數
+						</li>
 					</ul>
 				</div>
 			</div>
@@ -208,7 +230,11 @@
 	</div>
 
 	<div class="mb-10">
-		<h2 class="text-2xl font-semibold mb-6 pb-3 border-b border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white">離開訊息設定</h2>
+		<h2
+			class="text-2xl font-semibold mb-6 pb-3 border-b border-gray-200 dark:border-gray-700 text-gray-900 dark:text-white"
+		>
+			離開訊息設定
+		</h2>
 
 		<div class="mb-6">
 			<label class="inline-flex items-center cursor-pointer">
@@ -221,13 +247,20 @@
 			</label>
 		</div>
 
-		<div class="grid grid-cols-1 gap-6 mb-8 transition-opacity duration-200 {!leaveEnabled ? 'opacity-50' : ''}">
+		<div
+			class="grid grid-cols-1 gap-6 mb-8 transition-opacity duration-200 {!leaveEnabled
+				? 'opacity-50'
+				: ''}"
+		>
 			<div>
-				<label for="leaveChannel" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
-					>頻道選擇</label
+				<label
+					for="leaveChannel"
+					class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">頻道選擇</label
 				>
 				{#if loadingChannels}
-					<div class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-800 text-gray-500 dark:text-gray-400">
+					<div
+						class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg bg-gray-50 dark:bg-gray-800 text-gray-500 dark:text-gray-400"
+					>
 						<i class="fas fa-spinner fa-spin mr-2"></i>載入頻道中...
 					</div>
 				{:else if channelsError}
@@ -257,8 +290,9 @@
 			</div>
 
 			<div>
-				<label for="leaveMessage" class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2"
-					>離開訊息</label
+				<label
+					for="leaveMessage"
+					class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">離開訊息</label
 				>
 				<textarea
 					id="leaveMessage"
@@ -268,12 +302,20 @@
 					rows="4"
 					class="w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent bg-white dark:bg-gray-800 text-gray-900 dark:text-white transition-all duration-200"
 				></textarea>
-				<div class="text-xs text-gray-500 dark:text-gray-400 mt-2 bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+				<div
+					class="text-xs text-gray-500 dark:text-gray-400 mt-2 bg-gray-50 dark:bg-gray-800 p-3 rounded-lg"
+				>
 					<p class="font-medium mb-2">可用的變數：</p>
 					<ul class="list-disc list-inside ml-2 space-y-1">
-						<li><code class="bg-gray-200 dark:bg-gray-700 px-1 rounded">{'{user}'}</code> - 顯示用戶名稱</li>
-						<li><code class="bg-gray-200 dark:bg-gray-700 px-1 rounded">{'{server}'}</code> - 顯示伺服器名稱</li>
-						<li><code class="bg-gray-200 dark:bg-gray-700 px-1 rounded">{'{count}'}</code> - 離開後的伺服器總人數</li>
+						<li>
+							<code class="bg-gray-200 dark:bg-gray-700 px-1 rounded">{'{user}'}</code> - 顯示用戶名稱
+						</li>
+						<li>
+							<code class="bg-gray-200 dark:bg-gray-700 px-1 rounded">{'{server}'}</code> - 顯示伺服器名稱
+						</li>
+						<li>
+							<code class="bg-gray-200 dark:bg-gray-700 px-1 rounded">{'{count}'}</code> - 離開後的伺服器總人數
+						</li>
 					</ul>
 				</div>
 			</div>

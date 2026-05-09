@@ -261,10 +261,10 @@
 	}
 </script>
 
-<div class="bg-white rounded-lg shadow-md p-6">
+<div>
 	<header class="mb-6">
 		<h1 class="text-2xl font-bold text-gray-800">身分組下拉選單管理</h1>
-		<p class="text-gray-600">創建和管理可讓用戶自選身分組的下拉選單</p>
+		<p class="text-gray-600 dark:text-gray-300 mt-2">創建和管理可讓用戶自選身分組的下拉選單</p>
 	</header>
 
 	{#if saveSuccess}
@@ -296,11 +296,11 @@
 		{:else}
 			<div class="space-y-6">
 				{#each dropdowns as dropdown}
-					<div class="border rounded-lg p-4 bg-gray-50">
+					<div class="p-4 bg-gray-50 dark:bg-gray-800">
 						<div class="flex justify-between items-start mb-3">
 							<div>
 								<h3 class="font-medium text-lg">{dropdown.listName}</h3>
-								<div class="text-sm text-gray-600">
+								<div class="text-sm text-gray-600 dark:text-gray-300">
 									<p>選單 ID: {dropdown.id}</p>
 									<p>頻道 ID: {dropdown.channelId}</p>
 								</div>
@@ -546,6 +546,6 @@
 
 	<div class="mt-8 border-t border-gray-200 pt-4">
 		<h3 class="text-lg font-medium mb-2">關於身分組下拉選單</h3>
-		<p class="text-gray-600">身分組下拉選單功能允許伺服器成員通過下拉選單選擇自己想要的身分組。</p>
+		<p class="text-gray-600 dark:text-gray-300">身分組下拉選單功能允許伺服器成員通過下拉選單選擇自己想要的身分組。</p>
 	</div>
 </div>
