@@ -38,7 +38,7 @@
 <div>
 	<About />
 	<Fun />
-	<Music />
+	<!-- <Music /> -->
 	<Game />
 </div>
 
@@ -59,8 +59,8 @@
 				class="bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100"
 			>
 				<i class="fa-solid fa-music text-5xl text-gray-800 mb-6"></i>
-				<h3 class="text-2xl font-bold mb-4 text-gray-900">音樂功能</h3>
-				<p class="text-gray-600 leading-relaxed">播放 YouTube、Spotify 等多平台音樂</p>
+				<h3 class="text-2xl font-bold mb-4 text-gray-900">語音管理</h3>
+				<p class="text-gray-600 leading-relaxed">鎖碼語音，動態語音，語音移動</p>
 			</div>
 
 			<div
