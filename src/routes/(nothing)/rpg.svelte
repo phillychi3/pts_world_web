@@ -183,162 +183,222 @@
 	})
 </script>
 
-<h2 class="h2 text-center mb-12">RPG系統</h2>
-<section
-	class="p-4 bg-gray-800 rounded-lg max-w-2xl mx-auto my-8 text-white shadow-2xl border border-gray-700 font-sans"
->
-	<div class="flex items-center mb-4 gap-3">
-		<div
-			class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center overflow-hidden"
-		>
-			<img
-				src="https://cdn.discordapp.com/avatars/1044529058689593435/289ffc05483f3850560da827a9026d07.png"
-				alt="Bot Avatar"
-				class="w-full h-full object-cover"
-			/>
-		</div>
-		<div class="flex flex-col">
-			<div class="flex items-center gap-2">
-				<span class="text-yellow-400 font-bold">NothingBot</span>
-				<span class="bg-blue-600 text-xs px-2 py-0.5 rounded-full text-white">應用</span>
-			</div>
-			<span class="text-gray-400 text-xs"
-				>今天 下午 {new Date().getHours()}:{String(new Date().getMinutes()).padStart(2, '0')}</span
-			>
-		</div>
+<div class="rpg-wrap">
+	<div class="rpg-head">
+		<span class="rpg-meta">— rpg_demo_</span>
+		<h2 class="rpg-headline">RPG 系統</h2>
+		<p class="rpg-sub">在 Discord 中即時體驗回合制戰鬥</p>
 	</div>
 
-	<div class="pl-12">
-		<div class="battle-card bg-gray-900 p-4 rounded-md mb-4 border border-gray-700">
-			<h2 class="text-lg font-bold mb-2">戰鬥</h2>
-			<p class="text-sm text-gray-400 mb-3">請選擇你的行動</p>
-
-			<div class="grid grid-cols-2 gap-6 mb-4">
-				<div class="battle-card">
-					<div class="mb-1 flex justify-between">
-						<span class="text-sm font-semibold">玩家資料:</span>
-						<span class="text-sm text-gray-400">Lv.{player.level}</span>
-					</div>
-
-					<div class="flex justify-between mb-1 text-sm">
-						<span>血量:{player.hp}</span>
-						<div class="w-24 bg-gray-700 rounded-full h-2 overflow-hidden">
-							<div
-								class="h-full transition-all duration-300"
-								style="width: {playerHpPercent}%; background-color: {playerHpPercent > 50
-									? '#4ade80'
-									: playerHpPercent > 20
-										? '#facc15'
-										: '#ef4444'}"
-							></div>
-						</div>
-					</div>
-
-					<div class="text-sm">攻擊力:{player.atk} / {10}</div>
-					<div class="text-sm">防禦力:{player.def}</div>
-				</div>
-
-				<div class="battle-card">
-					<div class="mb-1 flex justify-between">
-						<span class="text-sm font-semibold">{enemy.name}</span>
-						<span class="text-sm text-gray-400">Lv.{enemy.level}</span>
-					</div>
-
-					<div class="flex justify-between mb-1 text-sm">
-						<span>血量:{enemy.hp}</span>
-						<div class="w-24 bg-gray-700 rounded-full h-2 overflow-hidden">
-							<div
-								class="h-full transition-all duration-300"
-								style="width: {enemyHpPercent}%; background-color: {enemyHpPercent > 50
-									? '#ef4444'
-									: enemyHpPercent > 20
-										? '#facc15'
-										: '#4ade80'}"
-							></div>
-						</div>
-					</div>
-
-					<div class="text-sm">攻擊力:{enemy.atk}</div>
-					<div class="text-sm">防禦力:{enemy.def}</div>
-				</div>
-			</div>
-
-			<div class="battle-card mb-4">
-				<div class="text-sm font-semibold mb-2">紀錄</div>
-				<div
-					class="battle-logs bg-gray-950 p-2 rounded text-xs text-gray-300 h-20 overflow-y-auto space-y-1"
-				>
-					{#if battleLogs.length === 0}
-						<p class="text-center text-gray-500">......</p>
-					{:else}
-						{#each battleLogs as log}
-							<p>{log}</p>
-						{/each}
-					{/if}
-				</div>
-			</div>
-
-			<div class="grid grid-cols-4 gap-2">
-				<button
-					class="action-btn py-2 px-4 rounded bg-green-700 hover:bg-green-600 text-white text-sm transition-all"
-					on:click={normalAttack}
-					disabled={!playerTurn || battleResult !== ''}
-				>
-					普通攻擊
-				</button>
-
-				<button
-					class="action-btn py-2 px-4 rounded bg-blue-700 hover:bg-blue-600 text-white text-sm transition-all"
-					on:click={magicAttack}
-					disabled={!playerTurn || battleResult !== ''}
-				>
-					魔法
-				</button>
-
-				<button
-					class="action-btn py-2 px-4 rounded bg-amber-700 hover:bg-amber-600 text-white text-sm transition-all"
-					on:click={useItem}
-					disabled={!playerTurn || battleResult !== ''}
-				>
-					物品
-				</button>
-
-				<button
-					class="action-btn py-2 px-4 rounded bg-red-700 hover:bg-red-600 text-white text-sm transition-all"
-					on:click={escape}
-					disabled={!playerTurn || battleResult !== ''}
-				>
-					逃跑
-				</button>
-			</div>
-		</div>
-
-		{#if battleResult !== ''}
+	<section
+		class="p-4 bg-gray-800 rounded-lg max-w-2xl mx-auto my-8 text-white shadow-2xl border border-gray-700 font-sans"
+	>
+		<div class="flex items-center mb-4 gap-3">
 			<div
-				class="battle-card bg-gray-900 p-4 rounded-md border border-gray-700 text-center animate-fadeIn"
+				class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center overflow-hidden"
 			>
-				<p class="text-xl font-bold mb-2">
-					{#if battleResult === '勝利'}
-						<span class="text-green-400">戰鬥勝利！</span>
-					{:else if battleResult === '失敗'}
-						<span class="text-red-400">戰鬥失敗！</span>
-					{:else}
-						<span class="text-yellow-400">成功逃跑</span>
-					{/if}
-				</p>
-
-				<button
-					class="mt-2 py-2 px-4 rounded bg-purple-700 hover:bg-purple-600 text-white text-sm transition-all"
-					on:click={resetBattle}
-				>
-					重新開始
-				</button>
+				<img
+					src="https://cdn.discordapp.com/avatars/1044529058689593435/289ffc05483f3850560da827a9026d07.png"
+					alt="Bot Avatar"
+					class="w-full h-full object-cover"
+				/>
 			</div>
-		{/if}
-	</div>
-</section>
+			<div class="flex flex-col">
+				<div class="flex items-center gap-2">
+					<span class="text-yellow-400 font-bold">NothingBot</span>
+					<span class="bg-blue-600 text-xs px-2 py-0.5 rounded-full text-white">應用</span>
+				</div>
+				<span class="text-gray-400 text-xs"
+					>今天 下午 {new Date().getHours()}:{String(new Date().getMinutes()).padStart(
+						2,
+						'0'
+					)}</span
+				>
+			</div>
+		</div>
+
+		<div class="pl-12">
+			<div class="battle-card bg-gray-900 p-4 rounded-md mb-4 border border-gray-700">
+				<h2 class="text-lg font-bold mb-2">戰鬥</h2>
+				<p class="text-sm text-gray-400 mb-3">請選擇你的行動</p>
+
+				<div class="grid grid-cols-2 gap-6 mb-4">
+					<div class="battle-card">
+						<div class="mb-1 flex justify-between">
+							<span class="text-sm font-semibold">玩家資料:</span>
+							<span class="text-sm text-gray-400">Lv.{player.level}</span>
+						</div>
+
+						<div class="flex justify-between mb-1 text-sm">
+							<span>血量:{player.hp}</span>
+							<div class="w-24 bg-gray-700 rounded-full h-2 overflow-hidden">
+								<div
+									class="h-full transition-all duration-300"
+									style="width: {playerHpPercent}%; background-color: {playerHpPercent > 50
+										? '#4ade80'
+										: playerHpPercent > 20
+											? '#facc15'
+											: '#ef4444'}"
+								></div>
+							</div>
+						</div>
+
+						<div class="text-sm">攻擊力:{player.atk} / {10}</div>
+						<div class="text-sm">防禦力:{player.def}</div>
+					</div>
+
+					<div class="battle-card">
+						<div class="mb-1 flex justify-between">
+							<span class="text-sm font-semibold">{enemy.name}</span>
+							<span class="text-sm text-gray-400">Lv.{enemy.level}</span>
+						</div>
+
+						<div class="flex justify-between mb-1 text-sm">
+							<span>血量:{enemy.hp}</span>
+							<div class="w-24 bg-gray-700 rounded-full h-2 overflow-hidden">
+								<div
+									class="h-full transition-all duration-300"
+									style="width: {enemyHpPercent}%; background-color: {enemyHpPercent > 50
+										? '#ef4444'
+										: enemyHpPercent > 20
+											? '#facc15'
+											: '#4ade80'}"
+								></div>
+							</div>
+						</div>
+
+						<div class="text-sm">攻擊力:{enemy.atk}</div>
+						<div class="text-sm">防禦力:{enemy.def}</div>
+					</div>
+				</div>
+
+				<div class="battle-card mb-4">
+					<div class="text-sm font-semibold mb-2">紀錄</div>
+					<div
+						class="battle-logs bg-gray-950 p-2 rounded text-xs text-gray-300 h-20 overflow-y-auto space-y-1"
+					>
+						{#if battleLogs.length === 0}
+							<p class="text-center text-gray-500">......</p>
+						{:else}
+							{#each battleLogs as log}
+								<p>{log}</p>
+							{/each}
+						{/if}
+					</div>
+				</div>
+
+				<div class="grid grid-cols-4 gap-2">
+					<button
+						class="action-btn py-2 px-4 rounded bg-green-700 hover:bg-green-600 text-white text-sm transition-all"
+						on:click={normalAttack}
+						disabled={!playerTurn || battleResult !== ''}
+					>
+						普通攻擊
+					</button>
+
+					<button
+						class="action-btn py-2 px-4 rounded bg-blue-700 hover:bg-blue-600 text-white text-sm transition-all"
+						on:click={magicAttack}
+						disabled={!playerTurn || battleResult !== ''}
+					>
+						魔法
+					</button>
+
+					<button
+						class="action-btn py-2 px-4 rounded bg-amber-700 hover:bg-amber-600 text-white text-sm transition-all"
+						on:click={useItem}
+						disabled={!playerTurn || battleResult !== ''}
+					>
+						物品
+					</button>
+
+					<button
+						class="action-btn py-2 px-4 rounded bg-red-700 hover:bg-red-600 text-white text-sm transition-all"
+						on:click={escape}
+						disabled={!playerTurn || battleResult !== ''}
+					>
+						逃跑
+					</button>
+				</div>
+			</div>
+
+			{#if battleResult !== ''}
+				<div
+					class="battle-card bg-gray-900 p-4 rounded-md border border-gray-700 text-center animate-fadeIn"
+				>
+					<p class="text-xl font-bold mb-2">
+						{#if battleResult === '勝利'}
+							<span class="text-green-400">戰鬥勝利！</span>
+						{:else if battleResult === '失敗'}
+							<span class="text-red-400">戰鬥失敗！</span>
+						{:else}
+							<span class="text-yellow-400">成功逃跑</span>
+						{/if}
+					</p>
+
+					<button
+						class="mt-2 py-2 px-4 rounded bg-purple-700 hover:bg-purple-600 text-white text-sm transition-all"
+						on:click={resetBattle}
+					>
+						重新開始
+					</button>
+				</div>
+			{/if}
+		</div>
+	</section>
+</div>
 
 <style>
+	.rpg-wrap {
+		background: #faf9f6;
+		color: #1a1a1a;
+		border-top: 1px solid #e8e4da;
+		padding: 8rem 2.5rem 6rem;
+		font-family: 'Noto Sans TC', system-ui, sans-serif;
+	}
+
+	.rpg-head {
+		max-width: 1200px;
+		margin: 0 auto 4rem;
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+
+	.rpg-meta {
+		font-family: 'JetBrains Mono', ui-monospace, monospace;
+		font-size: 0.75rem;
+		letter-spacing: 0.15em;
+		text-transform: uppercase;
+		color: #8a8478;
+	}
+
+	.rpg-headline {
+		font-size: clamp(2.5rem, 6vw, 4.5rem);
+		font-weight: 300;
+		letter-spacing: -0.03em;
+		line-height: 1;
+		margin: 0;
+	}
+
+	.rpg-sub {
+		font-size: 0.95rem;
+		font-weight: 300;
+		color: #6b6557;
+		margin: 0;
+	}
+
+	:global(.dark) .rpg-wrap {
+		background: #1a1a1a;
+		color: #faf9f6;
+		border-top-color: #2a2a28;
+	}
+
+	:global(.dark) .rpg-meta,
+	:global(.dark) .rpg-sub {
+		color: #a8a293;
+	}
+
 	@keyframes fadeIn {
 		from {
 			opacity: 0;
