@@ -1,3 +1,12 @@
+<svelte:head>
+	<title>隱私權政策 - PTS World Discord 機器人</title>
+	<meta name="description" content="PTS World Discord 機器人的隱私權政策，說明我們如何收集、使用與保護您的個人資料。" />
+	<link rel="canonical" href="https://nothing.cloudowo.com/ptsworld/privacy" />
+	<meta property="og:title" content="隱私權政策 - PTS World" />
+	<meta property="og:description" content="PTS World Discord 機器人的隱私權政策。" />
+	<meta property="og:url" content="https://nothing.cloudowo.com/ptsworld/privacy" />
+</svelte:head>
+
 <div class="container mx-auto px-4 py-4">
 	<h2 class="h2">隱私權政策</h2>
 	<p>

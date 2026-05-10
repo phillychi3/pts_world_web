@@ -2,6 +2,15 @@
 	import { base } from '$app/paths'
 </script>
 
+<svelte:head>
+	<title>使用條款 - PTS World Discord 機器人</title>
+	<meta name="description" content="PTS World Discord 機器人的使用條款，使用本服務前請詳閱相關規範。" />
+	<link rel="canonical" href="https://nothing.cloudowo.com/ptsworld/terms" />
+	<meta property="og:title" content="使用條款 - PTS World" />
+	<meta property="og:description" content="PTS World Discord 機器人的使用條款。" />
+	<meta property="og:url" content="https://nothing.cloudowo.com/ptsworld/terms" />
+</svelte:head>
+
 <div class="container mx-auto px-4 py-4">
 	<h3 class="h3">用戶條約</h3>
 	<p>

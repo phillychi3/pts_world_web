@@ -9,7 +9,16 @@
 </script>
 
 <svelte:head>
-	<title>Nothing bot</title>
+	<title>Nothing bot - 多功能 Discord 機器人 | 娛樂、修連結</title>
+	<meta name="description" content="Nothing bot 是一款多功能 Discord 機器人，提供娛樂遊戲、連結修復、安全管理等實用功能，立即邀請至你的伺服器。" />
+	<link rel="canonical" href="https://nothing.cloudowo.com/" />
+	<meta property="og:title" content="Nothing bot - 多功能 Discord 機器人" />
+	<meta property="og:description" content="提供娛樂、修連結、安全管理等多種功能的 Discord 機器人。" />
+	<meta property="og:url" content="https://nothing.cloudowo.com/" />
+	<meta property="og:type" content="website" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="Nothing bot - 多功能 Discord 機器人" />
+	<meta name="twitter:description" content="提供娛樂、修連結、安全管理等多種功能的 Discord 機器人。" />
 </svelte:head>
 
 <section class="hero-minimal">

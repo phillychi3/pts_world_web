@@ -7,9 +7,9 @@
 
 	const fixes = [
 		{ from: 'twitter.com/user/status/...', to: 'fxtwitter.com/user/status/...', label: 'Twitter' },
-		{ from: 'pixiv.net/artworks/...', to: 'phixiv.net/artworks/...', label: 'Pixiv' },
-		{ from: 'nhentai.net/g/...', to: 'nhentai.xxx/g/...', label: 'nhentai' },
-		{ from: 'e-hentai.org/g/...', to: 'ehgt.org/g/...', label: 'E(x)hentai' }
+		{ from: 'pixiv.net/artworks/...', to: 'Embed', label: 'Pixiv' },
+		{ from: 'nhentai.net/g/...', to: 'Embed', label: 'nhentai' },
+		{ from: 'e-hentai.org/g/...', to: 'Embed', label: 'E(x)hentai' }
 	]
 
 	onMount(() => {

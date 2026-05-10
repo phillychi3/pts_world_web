@@ -27,8 +27,8 @@
 			</div>
 			<div class="footer-col">
 				<div class="col-head">legal_</div>
-				<a href="{base}/">隱私權政策</a>
-				<a href="{base}/">使用條款</a>
+				<a href="{base}/privacy">隱私權政策</a>
+				<a href="{base}/terms">使用條款</a>
 				<span class="muted">聯絡我們</span>
 			</div>
 		</div>

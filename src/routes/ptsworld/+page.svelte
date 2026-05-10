@@ -5,7 +5,16 @@
 </script>
 
 <svelte:head>
-	<title>pts world, 最好的娛樂機器人</title>
+	<title>PTS World - 最好的娛樂 Discord 機器人 | 遊戲、互動</title>
+	<meta name="description" content="PTS World 是專為 Discord 伺服器打造的娛樂機器人，提供豐富的遊戲、互動功能，立即邀請到你的伺服器，享受最佳娛樂體驗。" />
+	<link rel="canonical" href="https://nothing.cloudowo.com/ptsworld" />
+	<meta property="og:title" content="PTS World - 最好的娛樂 Discord 機器人" />
+	<meta property="og:description" content="專為 Discord 伺服器打造的娛樂機器人，提供豐富遊戲與互動功能。" />
+	<meta property="og:url" content="https://nothing.cloudowo.com/ptsworld" />
+	<meta property="og:type" content="website" />
+	<meta name="twitter:card" content="summary_large_image" />
+	<meta name="twitter:title" content="PTS World - 最好的娛樂 Discord 機器人" />
+	<meta name="twitter:description" content="專為 Discord 伺服器打造的娛樂機器人，提供豐富遊戲與互動功能。" />
 </svelte:head>
 
 <div class="max-h-full">
